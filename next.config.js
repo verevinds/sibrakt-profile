@@ -1,5 +1,5 @@
 module.exports = {
     env: {
-        mongodburl: "mongodb://mongo:27017/",
+        mongodburl: process.env.mongodburl,
     }
 };
