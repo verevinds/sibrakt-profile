@@ -3,11 +3,14 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import connectDB from "src/mongodb";
 import addUser from "src/mongodb/controler/users/add";
 
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+const handler = async (
+  { method, body }: NextApiRequest,
+  res: NextApiResponse
+) => {
   try {
-    switch (req.method) {
+    switch (method) {
       case "POST":
-        const user = await addUser(req.body);
+        const user = await addUser(body);
 
         return res.status(200).send(user);
       default:
