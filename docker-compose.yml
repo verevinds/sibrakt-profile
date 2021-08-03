@@ -1,24 +1,6 @@
 version: '2.2'
 
 services:
-  api:
-    restart: always
-    expose:
-      - 8081
-    ports:
-      - 8080:8080
-    build:
-      context: ./server
-      dockerfile: ./Dockerfile
-    volumes:
-      - ./server:/app
-    env_file:
-      - ./server/.env
-    depends_on:
-      - mongo
-    networks:
-      - local
-
   client:
     restart: on-failure
     expose:
@@ -26,16 +8,15 @@ services:
     ports:
       - 80:80
     build:
-      context: ./client
+      context: ./
       dockerfile: ./Dockerfile
     command: npm run dev
     volumes:
-      - ./client:/app
-      - ./node_modules:/app/node_modules
+      - ./:/app
     env_file:
-      - ./server/.env
+      - .env
     depends_on:
-      - api
+      - mongo
     networks:
       - local
 
