@@ -6,8 +6,8 @@ import User from "src/mongodb/models/user";
 const SECRET_KEY = process.env.SECRET_KEY as string;
 
 export default async (req: NextApiRequest) => {
-  const { userName, password } = req.body;
-  const user = await User.findOne({ userName, password }).select("-__v");
+  const { email, password } = req.body;
+  const user = await User.findOne({ email, password }).select("-__v");
 
   if (user) {
     return { accessToken: jwt.sign({ userId: user.id }, SECRET_KEY) };
