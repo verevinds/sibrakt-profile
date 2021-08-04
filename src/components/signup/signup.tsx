@@ -12,7 +12,7 @@ import MESSAGES from "./sign-up.messages";
 import styles from "./signup.module.css";
 import { useSignUp } from "src/hooks/api/useSignUp";
 import { useForm } from "react-hook-form";
-import { SignUpRequest } from "src/types/auth/signup";
+import { SignUpRequest } from "src/types/auth";
 
 const SignIn = (): JSX.Element => {
   const {
@@ -22,12 +22,8 @@ const SignIn = (): JSX.Element => {
     setError,
   } = useForm<SignUpRequest & { submitPassword: string }>({ mode: "onChange" });
   const { mutate, error } = useSignUp();
-  // console.dir(error);
-  // const onClick =async()=>{
-  //  const res = await mutate({ email: "root@sibkart.ru", password: "1234" });
-  //  console.log(res)
-  // }
-  const phoneNumber = register("email", {
+
+  const email = register("email", {
     required: MESSAGES.emailRequired,
   });
   const password = register("password", {
@@ -58,7 +54,7 @@ const SignIn = (): JSX.Element => {
               error={Boolean(
                 formErrors.email?.message || error?.response?.data.message
               )}
-              {...phoneNumber}
+              {...email}
             />
           </FormControl>
 

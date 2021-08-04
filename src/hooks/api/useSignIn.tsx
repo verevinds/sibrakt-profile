@@ -12,19 +12,19 @@ import { useAccessToken } from "src/hooks/useAccessToken";
 
 type AuthResponse = { accessToken: string };
 
-export const useSignUp = () => {
+export const useSignIn = () => {
   const request = useRequest();
   const { setAccessToken } = useAccessToken();
   const router = useRouter();
 
-  async function signUp (value: SignUpRequest) {
-    const { data } = await request.post("/api/auth/signup", value);
+  async function signIn(value: SignUpRequest) {
+    const { data } = await request.post("/api/auth/signin", value);
 
     return data;
   };
 
   return useMutation<AuthResponse, AxiosError<ApiError>, SignUpRequest>(
-    signUp,
+    signIn,
     {
       onSuccess: ({ accessToken }) => {
         setAccessToken(accessToken);
