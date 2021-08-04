@@ -1,0 +1,28 @@
+:root {
+  --background-dark: hsl(217, 23%, 11%);
+  --background-light: hsl(200, 13%, 95%);
+  --black-100: hsl(0, 0%, 0%);
+  --black-12: hsla(0, 0%, 88%);
+  --black-20: hsla(0, 0%, 80%);
+  --black-3: hsla(0, 0%, 97%);
+  --black-5: hsla(0, 0%, 95%);
+  --black-50: hsla(0, 0%, 50%);
+  --black-70: hsla(0, 0%, 30%);
+  --black-8: hsla(0, 0%, 92%);
+  --correct: hsl(149, 66%, 59%);
+  --error: hsl(0, 100%, 50%);
+  --primary-100: hsl(193, 100%, 44%);
+  --primary-30: hsl(193, 100%, 13%);
+  --primary-70: hsl(193, 100%, 30%);
+  --primary-8: hsl(193, 100%, 4%);
+  --text-color: var(--black-70);
+  --white-10: hsla(0, 0%, 10%);
+  --white-100: hsl(0, 0%, 100%);
+  --white-30: hsla(0, 0%, 30%);
+  --white-60: hsla(0, 0%, 60%);
+}
+
+html {
+  font-family: 'Open Sans', sans-seri;
+  font-size: 14px;
+}

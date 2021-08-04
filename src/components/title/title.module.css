@@ -1,0 +1,55 @@
+.Title__block {
+  font-style: italic;
+
+  display: flex;
+  justify-content: space-between;
+
+  margin: 0;
+  padding: 80px 25px 9px 50px;
+
+  color: var(--text-color);
+  color: rgb(69, 80, 82);
+}
+
+.Title__logo {
+  font-size: 3.7rem;
+
+  display: block;
+
+  color: var(--text-color);
+}
+
+.Title__logo_highlight {
+  color: var(--primary-100);
+}
+
+.Title__logo_bold, .Title__logo_highlight {
+  font-weight: bold;
+}
+
+.Title__date {
+  font-weight: 300;
+}
+
+@media (--tablet) {
+  .Title__block {
+    align-items: flex-end;
+    flex-direction: column;
+
+    padding: 15px 20px;
+  }
+  .Title__logo {
+    font-size: 3.5rem;
+  }
+}
+@media (--mobile) {
+  .Title__block {
+    padding: 15px 10px;
+  }
+  .Title__logo {
+    font-size: 1.4rem;
+  }
+  .Title__date {
+    font-size: .8rem;
+  }
+}

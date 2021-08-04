@@ -23,3 +23,10 @@ var user = new Schema({
 var User = mongoose.model('User', user);
 
 export default User;
+
+
+	// name: String,
+	// surname: String,
+	// phone: String,
+	// dataofbirth: String,
+	// score: Number
