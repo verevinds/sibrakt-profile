@@ -2,6 +2,8 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import NProgress from "nprogress";
 import { useEffect } from "react";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 
 import { useNavigationState } from "src/hooks/useNavigationState";
 
@@ -10,6 +12,8 @@ import "src/styles/global.css";
 import "normalize.css/normalize.css";
 
 const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME;
+
+export const queryClient = new QueryClient();
 
 function App({ Component, pageProps }: AppProps): JSX.Element {
   const { isNavigating } = useNavigationState();
@@ -60,8 +64,12 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
           rel="stylesheet"
         />
       </Head>
-
-        <Component {...pageProps} />
+      <QueryClientProvider client={queryClient}>
+          <Component {...pageProps} />
+        {process.env.NODE_ENV === "development" && (
+          <ReactQueryDevtools initialIsOpen={false} />
+        )}
+      </QueryClientProvider>
     </>
   );
 }

@@ -7,11 +7,38 @@ import FormControl from "src/components/form-control";
 
 import { ROUTE_DEFAULT, ROUTE_SIGN_IN } from "src/utils/route";
 
-import MESSAGES from './sign-up.messages';
+import MESSAGES from "./sign-up.messages";
 
 import styles from "./signup.module.css";
+import { useSignUp } from "src/hooks/api/useSignUp";
+import { useForm } from "react-hook-form";
+import { SignUpRequest } from "src/types/auth/signup";
 
 const SignIn = (): JSX.Element => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors: formErrors, isValid },
+    setError,
+  } = useForm<SignUpRequest & { submitPassword: string }>({ mode: "onChange" });
+  const { mutate, error } = useSignUp();
+  // console.dir(error);
+  // const onClick =async()=>{
+  //  const res = await mutate({ email: "root@sibkart.ru", password: "1234" });
+  //  console.log(res)
+  // }
+  const phoneNumber = register("email", {
+    required: MESSAGES.emailRequired,
+  });
+  const password = register("password", {
+    required: MESSAGES.passwordRequired,
+  });
+  const submitPassword = register("submitPassword", {
+    required: MESSAGES.submitPasswordRequired,
+  });
+
+  const onSubmit = handleSubmit((data) => mutate(data));
+
   return (
     <main className={styles["SignIn"]}>
       <section className={styles["SignIn__header"]}>
@@ -20,31 +47,42 @@ const SignIn = (): JSX.Element => {
 
       <section className={styles["SignIn__content"]}>
         <h1 className={styles["SignIn__title"]}>{MESSAGES.pageTitle}</h1>
-        <form className={styles["SignIn__form"]}>
-          <FormControl label={MESSAGES.emailLabel}>
+        <form className={styles["SignIn__form"]} onSubmit={onSubmit}>
+          <FormControl
+            label={MESSAGES.emailLabel}
+            error={formErrors.email?.message || error?.response?.data.message}
+          >
             <TextInput
-              name="userName"
               type="email"
-              required
               placeholder={MESSAGES.emailPlaceholder}
+              error={Boolean(
+                formErrors.email?.message || error?.response?.data.message
+              )}
+              {...phoneNumber}
             />
           </FormControl>
 
-          <FormControl label={MESSAGES.passwordLabel}>
+          <FormControl
+            label={MESSAGES.passwordLabel}
+            error={formErrors.password?.message}
+          >
             <TextInput
-              name="password"
               type="password"
-              required
               placeholder={MESSAGES.passwordPlaceholder}
+              error={Boolean(formErrors.password?.message)}
+              {...password}
             />
           </FormControl>
 
-          <FormControl label={MESSAGES.submitPasswordLabel}>
+          <FormControl
+            label={MESSAGES.submitPasswordLabel}
+            error={formErrors.submitPassword?.message}
+          >
             <TextInput
-              name="submitPassword"
               type="password"
-              required
               placeholder={MESSAGES.submitPasswordPlaceholder}
+              error={Boolean(formErrors.submitPassword?.message)}
+              {...submitPassword}
             />
           </FormControl>
 

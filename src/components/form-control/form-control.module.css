@@ -1,27 +1,38 @@
 .FormControl {
-  margin-bottom: 25px;
   position: relative;
+
+  margin-bottom: 25px;
 }
 .FormControl__label {
-  color: #99a3ad;
   display: block;
+
   margin-bottom: 6px;
+
   text-align: left;
+
+  color: #99a3ad;
 }
 .FormControl__error {
   font-size: 12px;
   line-height: 1.17;
-  text-align: right;
-  color: var(--primary-100, #ff444a);
+
   position: absolute;
   right: 0;
+
   display: flex;
+
   width: 100%;
+
+  text-align: right;
+
+  color: var(--error);
 }
 .FormControl__errorMessage {
-  flex: 1;
-  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  flex: 1;
+
   margin-top: 5px;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
