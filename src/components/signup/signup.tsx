@@ -5,13 +5,13 @@ import TextInput from "src/components/text-input";
 import Button from "src/components/button";
 import FormControl from "src/components/form-control";
 
-import { ROUTE_DEFAULT, ROUTE_SIGN_UP } from "src/utils/route";
+import { ROUTE_DEFAULT, ROUTE_SIGN_IN } from "src/utils/route";
 
-import MESSAGES from './sign-in.messages';
+import MESSAGES from './sign-up.messages';
 
-import styles from "./signin.module.css";
+import styles from "./signup.module.css";
 
-const SignUp = (): JSX.Element => {
+const SignIn = (): JSX.Element => {
   return (
     <main className={styles["SignIn"]}>
       <section className={styles["SignIn__header"]}>
@@ -39,6 +39,15 @@ const SignUp = (): JSX.Element => {
             />
           </FormControl>
 
+          <FormControl label={MESSAGES.submitPasswordLabel}>
+            <TextInput
+              name="submitPassword"
+              type="password"
+              required
+              placeholder={MESSAGES.submitPasswordPlaceholder}
+            />
+          </FormControl>
+
           <Button className={styles["SignIn__submit"]} size="full-width">
             {MESSAGES.signIn}
           </Button>
@@ -47,10 +56,10 @@ const SignUp = (): JSX.Element => {
 
       <section className={styles["SignIn__links"]}>
         <NavLink href={ROUTE_DEFAULT}>Перейти к зачетам</NavLink>
-        <NavLink href={ROUTE_SIGN_UP}>Зарегистрироваться</NavLink>
+        <NavLink href={ROUTE_SIGN_IN}>Войти в систему</NavLink>
       </section>
     </main>
   );
 };
 
-export default SignUp;
+export default SignIn;

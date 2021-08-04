@@ -26,3 +26,26 @@ html {
   font-family: 'Open Sans', sans-seri;
   font-size: 14px;
 }
+
+a {
+  font-size: 16px;
+  font-weight: bold;
+
+  box-sizing: border-box;
+  min-height: 40px;
+  padding: 5px 20px;
+
+  cursor: pointer;
+  text-decoration: none;
+
+  color: var(--primary-100);
+  border: solid 2px transparent;
+  border-radius: 8px;
+  background-color: transparent;
+}
+a:hover {
+  color: var(--primary-70);
+}
+a:active {
+  transform: translateY(5px);
+}

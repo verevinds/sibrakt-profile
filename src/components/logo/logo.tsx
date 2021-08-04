@@ -8,7 +8,7 @@ const Logo = ({className, ...restProps}: HTMLAttributes<HTMLDivElement>):JSX.Ele
     <div className={cn(styles["Logo"], className)} {...restProps}>
       <span className={styles["Logo_highlight"]}>СИБ</span>
       <span className={styles["Logo_bold"]}>КАРТ</span>
-      <span>МОТОРСПОРТ ТОП10</span>
+      <span>МОТОРСПОРТ</span>
     </div>
   );
 

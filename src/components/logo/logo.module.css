@@ -14,14 +14,8 @@
   font-weight: bold;
 }
 
-
-@media (--tablet) {
-  .Logo {
-    font-size: 3.5rem;
-  }
-}
 @media (--mobile) {
   .Logo {
-    font-size: 1.4rem;
+    font-size: 1.7rem;
   }
 }
