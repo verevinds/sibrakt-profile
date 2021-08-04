@@ -1,0 +1,15 @@
+.LoadingIcon {
+  background: rgba(0, 0, 0, 0);
+}
+.LoadingIcon__path :local {
+  animation: loadingIconKeyFrame 2s linear infinite both;
+}
+
+@keyframes :local(loadingIconKeyFrame) {
+  0% {
+    transform: translate(9px, 9px) rotate(0deg) translate(-9px, -9px);
+  }
+  to {
+    transform: translate(9px, 9px) rotate(360deg) translate(-9px, -9px);
+  }
+}

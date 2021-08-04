@@ -1,0 +1,42 @@
+.Container {
+  position: relative;
+}
+
+.Container__icon {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+
+  transform: translateY(-50%);
+}
+
+.Container__hintIcon {
+  z-index: 1;
+}
+.Container__hintIcon:hover .Container__hint {
+  visibility: visible;
+}
+
+.Container__hint {
+  font-size: 12px;
+  line-height: 1.83;
+
+  position: absolute;
+  top: 30px;
+  right: 0;
+
+  visibility: hidden;
+
+  width: 335px;
+  margin: 0;
+  padding: 16px;
+
+  color: var(--black-100);
+  border-radius: 8px;
+  background-color: var(--white-100);
+  box-shadow: 0 2px 10px 0 var(--black-8);
+}
+
+.TextInput_withIcon {
+  padding-right: 40px;
+}

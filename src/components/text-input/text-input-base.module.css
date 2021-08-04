@@ -1,0 +1,112 @@
+.TextInputBase {
+  font-size: 16px;
+
+  display: block;
+
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 44px;
+  padding-right: 12px;
+  padding-left: 12px;
+
+  color: var(--color-default);
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--border-color-default);
+  border-radius: 10px;
+  outline: none;
+  background-color: var(--background-default);
+}
+
+.TextInputBase:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px var(--background-default) inset;
+
+  caret-color: var(--color-default);
+  -webkit-text-fill-color: var(--color-default);
+}
+
+/* Credentials icon color */
+.TextInputBase::-webkit-credentials-auto-fill-button {
+  background-color: var(--color-default) !important;
+}
+
+.TextInputBase_variant_dark {
+  --background-default: #2a3038;
+  --background-invalid: #302127;
+  --border-color-default: #3f474f;
+  --border-color-invalid: #ff444a;
+  --color-default: white;
+  --color-invalid: white;
+  --placeholder-color: #929599;
+  --placeholder-color-invalid: white;
+}
+
+.TextInputBase_variant_light {
+  --background-default: rgba(153, 163, 173, .15);
+  --background-invalid: rgba(255, 68, 74, .1);
+  --border-color-default: rgba(153, 163, 173, .2);
+  --border-color-invalid: #ff444aff;
+  --color-default: #07022d;
+  --color-invalid: #07022d;
+  --placeholder-color: rgba(7, 2, 45, .5);
+  --placeholder-color-invalid: rgba(7, 2, 45, .5);
+}
+
+.TextInputBase::placeholder {
+  font-size: 16px;
+
+  color: var(--placeholder-color);
+}
+.TextInputBase::-ms-reveal, .TextInputBase::-ms-clear {
+  display: none;
+}
+
+.TextInputBase_error {
+  color: var(--color-invalid);
+  border-color: var(--border-color-invalid);
+  background-color: var(--background-invalid);
+}
+
+.TextInputBase_error:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px var(--background-invalid) inset;
+
+  caret-color: var(--color-invalid);
+  -webkit-text-fill-color: var(--color-invalid);
+}
+
+.TextInputBase_error::placeholder {
+  color: var(--placeholder-color-invalid);
+}
+
+.TextInputBase:hover, .TextInputBase_variant_dark:hover {
+  border-color: var(--primary-70);
+}
+
+.TextInputBase:focus, .TextInputBase_variant_dark:focus {
+  box-shadow: 0 0 0 2px var(--primary-100);
+}
+
+.TextInputBase:disabled {
+  color: #c9c8d1;
+  border-color: #f5f6f7;
+  background-color: #fafbfb;
+}
+
+.TextInputBase:disabled::placeholder {
+  color: #c9c8d1;
+}
+
+.TextInputBase_variant_dark:disabled {
+  color: #575b62;
+  border-color: #2b3139;
+  background-color: #20252e;
+}
+.TextInputBase_variant_dark:disabled::placeholder {
+  color: #575b62;
+}
+
+.TextInputBase_error:hover, .TextInputBase_error:focus {
+  color: var(--color-default);
+  border-color: var(--primary-100, #ff444a);
+  background-color: rgba(255, 68, 74, .1);
+}

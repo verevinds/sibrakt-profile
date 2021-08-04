@@ -5,8 +5,11 @@ import { useEffect } from "react";
 
 import { useNavigationState } from "src/hooks/useNavigationState";
 
-import 'src/styles/global.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "src/styles/global.css";
 import "normalize.css/normalize.css";
+
+import AppLayout from "src/components/app-layout/app-layout";
 
 const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME;
 
@@ -60,7 +63,9 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
         />
       </Head>
 
-      <Component {...pageProps} />
+      <AppLayout>
+        <Component {...pageProps} />
+      </AppLayout>
     </>
   );
 }

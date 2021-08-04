@@ -1,0 +1,99 @@
+.Button {
+  font-size: 16px;
+  font-weight: bold;
+
+  box-sizing: border-box;
+  min-height: 40px;
+  padding: 5px 20px;
+
+  cursor: pointer;
+
+  border: solid 2px transparent;
+  border-radius: 8px;
+}
+
+.Button:not(:focus-visible) {
+  outline: none;
+}
+.Button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--primary-100);
+}
+
+.Button:disabled {
+  cursor: initial;
+
+  opacity: .5;
+}
+
+.Button:not(:disabled):active {
+  transform: translateY(2px);
+}
+
+.Button[data-loading='true'] {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.Button__loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  display: block;
+
+  width: 18px;
+  height: 18px;
+
+  transform: translate(-50%, -50%);
+}
+
+.Button_variant_default {
+  color: var(--black-50);
+  background-color: var(--black-8);
+}
+.Button_variant_default:not(:disabled):hover {
+  color: var(--primary-100);
+  background-color: var(--primary-30);
+}
+
+.Button_variant_primary {
+  color: var(--white-100);
+  background-color: var(--primary-100);
+}
+.Button_variant_primary:not(:disabled):hover {
+  background-color: var(--primary-70);
+}
+.Button_variant_link {
+  font-weight: 500;
+
+  color: var(--primary-100);
+  background-color: transparent;
+}
+.Button_variant_link:not(:disabled):hover {
+  color: var(--primary-70);
+}
+.Button_variant_outline {
+  color: var(--primary-100);
+  border-color: var(--primary-100);
+  background-color: var(--white-100);
+}
+.Button_variant_outline:not(:disabled):hover {
+  color: var(--primary-70);
+  border-color: var(--primary-70);
+}
+
+.Button_size_large, .Button_size_fullWidth {
+  font-size: 17px;
+  font-weight: 600;
+
+  min-height: 44px;
+}
+.Button_size_fullWidth {
+  width: 100%;
+}
+.Button_size_small {
+  min-height: 30px;
+}

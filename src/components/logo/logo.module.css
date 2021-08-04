@@ -1,0 +1,27 @@
+.Logo {
+  font-size: 3.7rem;
+
+  display: block;
+
+  color: var(--text-color);
+}
+
+.Logo_highlight {
+  color: var(--primary-100);
+}
+
+.Logo_bold, .Logo_highlight {
+  font-weight: bold;
+}
+
+
+@media (--tablet) {
+  .Logo {
+    font-size: 3.5rem;
+  }
+}
+@media (--mobile) {
+  .Logo {
+    font-size: 1.4rem;
+  }
+}
