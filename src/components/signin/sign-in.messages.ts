@@ -7,4 +7,6 @@ export default {
   passwordPlaceholder: "Введите пароль",
   passwordRequired: "Пароль обязателен",
   signIn: "Войти",
+  navLinkBackText: "Перейти к зачетам",
+  navLinkSignUpText: "Зарегистрироваться",
 };

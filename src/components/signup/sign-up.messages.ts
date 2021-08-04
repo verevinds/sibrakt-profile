@@ -6,8 +6,11 @@ export default {
   passwordLabel: "Пароль",
   passwordPlaceholder: "Введите пароль",
   passwordRequired: "Пароль обязателен",
-  submitPasswordLabel: 'Повторить пароль',
-  submitPasswordPlaceholder: 'Введите пароль повторно',
-  submitPasswordRequired: 'Повторный ввод пароля обязателен',
+  submitPasswordLabel: "Повторить пароль",
+  submitPasswordPlaceholder: "Введите пароль повторно",
+  submitPasswordRequired: "Повторный ввод пароля обязателен",
   signIn: "Зарегистрироваться",
+
+  navLinkBackText: "Перейти к зачетам",
+  navLinkSignInText: "Войти в систему",
 };

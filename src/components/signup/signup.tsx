@@ -55,8 +55,8 @@ const SignIn = (): JSX.Element => {
       </section>
 
       <section className={styles["SignIn__links"]}>
-        <NavLink href={ROUTE_DEFAULT}>Перейти к зачетам</NavLink>
-        <NavLink href={ROUTE_SIGN_IN}>Войти в систему</NavLink>
+        <NavLink href={ROUTE_DEFAULT}>{MESSAGES.navLinkBackText}</NavLink>
+        <NavLink href={ROUTE_SIGN_IN}>{MESSAGES.navLinkSignInText}</NavLink>
       </section>
     </main>
   );

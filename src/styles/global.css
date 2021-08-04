@@ -49,3 +49,7 @@ a:hover {
 a:active {
   transform: translateY(5px);
 }
+a:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--primary-100);
+}
