@@ -1,16 +1,16 @@
 import NavLink from "next/link";
 import cn from "classnames";
 
+import Button from "src/components/button";
+
+import { useAccessToken } from "src/hooks/useAccessToken";
+
 import { ROUTE_SIGN_IN } from "src/utils/route";
 
 import styles from "./header.module.css";
-import Logo from "../logo";
-import { useAccessToken } from "src/hooks/useAccessToken";
-import Button from "../button";
 
 const Header = (): JSX.Element => {
   const { accessToken, removeAccessToken } = useAccessToken();
-console.log(accessToken)
   return (
     <header className={cn(styles["Header"])}>
       <div className={styles["Header__user"]}>
