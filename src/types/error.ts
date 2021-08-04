@@ -1,5 +1,5 @@
 export type ApiError = {
-  errors: {
+  errors?: {
     [key: string]: {
       name: string;
       message: string;
@@ -14,8 +14,8 @@ export type ApiError = {
       value: string;
     } | undefined;
   };
-  _message: string;
-  name: string;
+  _message?: string;
+  name?: string;
   message: string;
 };
 // {

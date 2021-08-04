@@ -1,32 +1,45 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 var Schema = mongoose.Schema;
 
 var user = new Schema({
-  name: {
+  userName: {
     type: String,
-    required: true
+    required: true,
+    unique: true,
+  },
+  firstName: {
+    type: String,
   },
   email: {
     type: String,
-    required: true
   },
   password: {
     type: String,
-    required: true
+    required: true,
   },
-  since: {
+  role: {
+    type: String,
+    default: "user",
+  },
+  phone: {
+    type: String,
+  },
+  bornAt: {
     type: Date,
-    default: Date.now
-  }
+  },
+  score: {
+    type: Number,
+    default: 0,
+  },
+  createAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
-var User = mongoose.model('User', user);
+//@ts-ignore
+mongoose.models = {}
+
+var User = mongoose.model("User", user);
 
 export default User;
-
-
-	// name: String,
-	// surname: String,
-	// phone: String,
-	// dataofbirth: String,
-	// score: Number

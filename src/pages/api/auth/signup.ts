@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
 import connectDB from "src/mongodb";
-import addUser from "src/mongodb/controllers/users/add";
+import signUp from "src/mongodb/controllers/auth/signup";
 
 import MESSAGE from "src/utils/api/messages";
 
@@ -12,7 +12,7 @@ const handler = async (
   try {
     switch (method) {
       case "POST":
-        const user = await addUser(body);
+        const user = await signUp(body);
 
         return res.status(200).send(user);
       default:
