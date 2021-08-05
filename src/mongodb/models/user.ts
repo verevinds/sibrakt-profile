@@ -14,7 +14,6 @@ var userSchema = new Schema({
   },
   email: {
     type: String,
-    required: true,
     unique: true,
     lowercase: true,
     validate: (value: string) => {
@@ -33,6 +32,7 @@ var userSchema = new Schema({
   },
   phone: {
     type: String,
+    required: true,
   },
   bornAt: {
     type: Date,
@@ -78,9 +78,9 @@ userSchema.methods.generateAuthToken = async function () {
   return token;
 };
 
-userSchema.statics.findByCredentials = async (email, password) => {
+userSchema.statics.findByCredentials = async (phone, password) => {
   // Search for a user by email and password.
-  const user = await User.findOne({ email });
+  const user = await User.findOne({ phone });
   if (!user) {
     throw { message: "Неверный логин или пароль" };
   }

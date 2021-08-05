@@ -1,12 +1,12 @@
 import User from "src/mongodb/models/user";
 
 export type User = {
-  email: string;
+  phone: string;
   password: string;
 };
 
 export default async (user: User) => {
-  const isUser = await User.findOne({ email: user.email }).select("-__v");
+  const isUser = await User.findOne({ phone: user.phone }).select("-__v");
   if (isUser) throw {message: 'Электронная почта уже используется'};
 
   const newUser = await new User(user).save();
