@@ -1,9 +1,5 @@
 import User from "src/mongodb/models/user";
 
-import jwt from "jsonwebtoken";
-
-const SECRET_KEY = process.env.SECRET_KEY as string;
-
 export type User = {
   email: string;
   password: string;
@@ -14,10 +10,12 @@ export default async (user: User) => {
   if (isUser) throw {message: 'Электронная почта уже используется'};
 
   const newUser = await new User(user).save();
+  //@ts-ignore
+  const accessToken = await newUser.generateAuthToken();
 
   return {
     ...newUser._doc,
     id: newUser._doc._id,
-    accessToken: jwt.sign({ userId: newUser.id, role: newUser.role }, SECRET_KEY),
+    accessToken,
   };
 };

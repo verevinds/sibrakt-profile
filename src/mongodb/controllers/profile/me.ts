@@ -1,6 +1,12 @@
 import { NextApiRequest } from "next";
-import User from "src/mongodb/models/user";
 
-export default (req: NextApiRequest) => {
-  console.log(req)
-};
+export default (req: NextApiRequest) => ({
+  //@ts-ignore
+  id: req.user.id,
+  //@ts-ignore
+  role: req.user.role,
+  //@ts-ignore
+  email: req.user.email,
+  //@ts-ignore
+  score: req.user.score,
+});

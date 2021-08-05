@@ -7,14 +7,13 @@ const SECRET_KEY = process.env.SECRET_KEY as string;
 
 export default async (req: NextApiRequest) => {
   const { email, password } = req.body;
-  const user = await User.findOne({ email, password }).select("-__v");
+  //@ts-ignore
+  const user = await User.findByCredentials(email, password);
+  const accessToken = await user.generateAuthToken();
 
   if (user) {
     return {
-      accessToken: jwt.sign(
-        { userId: user.id, role: user.role },
-        SECRET_KEY
-      ),
+      accessToken,
     };
   }
 

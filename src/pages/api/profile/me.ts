@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 import connectDB from "src/mongodb";
 import meProfilefrom from "src/mongodb/controllers/profile/me";
+import { auth } from "src/mongodb/middleware/auth";
 
 import MESSAGE from "src/utils/api/messages";
 
@@ -20,4 +21,4 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 };
 
-export default connectDB(handler);
+export default connectDB(auth(handler));
