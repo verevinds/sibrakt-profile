@@ -21,6 +21,8 @@ const NavLinks = (): JSX.Element => {
         }
         return (
           <ActiveLink
+            key={link.id}
+            exec={link?.exec}
             href={link.href}
             activeClassName={styles["NavLinks__link_active"]}
           >

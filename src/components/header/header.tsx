@@ -17,9 +17,9 @@ const Header = (): JSX.Element => {
 
   return (
     <header className={cn(styles["Header"])}>
-      <nav className={styles["Header__navigation"]}>
+      <div className={styles["Header__navigation"]}>
         <NavLinks />
-      </nav>
+      </div>
       <div className={styles["Header__exit"]}>
         {isAccessToken ? (
           <Button variant="link" onClick={removeAccessToken}>
