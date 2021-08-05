@@ -7,7 +7,7 @@ export type User = {
 
 export default async (user: User) => {
   const isUser = await User.findOne({ phone: user.phone }).select("-__v");
-  if (isUser) throw {message: 'Электронная почта уже используется'};
+  if (isUser) throw {message: 'Номер телефона уже используется'};
 
   const newUser = await new User(user).save();
   //@ts-ignore

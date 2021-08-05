@@ -30,10 +30,12 @@
     "validator": "^13.6.0"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
     "@types/jsonwebtoken": "^8.5.4",
     "@types/mongoose": "^5.11.97",
     "@types/nprogress": "^0.2.0",
     "@types/react": "^17.0.15",
+    "@types/validator": "^13.6.3",
     "postcss-custom-media": "^8.0.0",
     "prettier": "^2.3.2",
     "tslib": "^2.3.0",

@@ -21,6 +21,7 @@ const SignIn = (): JSX.Element => {
     register,
     handleSubmit,
     formState: { errors: formErrors },
+    setError,
   } = useForm<SignUpRequest & { submitPassword: string }>({ mode: "onChange" });
   const { mutate, error } = useSignUp();
 
@@ -34,7 +35,16 @@ const SignIn = (): JSX.Element => {
     required: MESSAGES.submitPasswordRequired,
   });
 
-  const onSubmit = handleSubmit((data) => mutate(data));
+  const onSubmit = handleSubmit((data) => {
+    if (data.password !== data.submitPassword) {
+      setError("submitPassword", {
+        type: "value",
+        message: "Пароли не совпадают",
+      });
+      return;
+    }
+    mutate(data);
+  });
 
   return (
     <main className={styles["SignIn"]}>
@@ -47,11 +57,16 @@ const SignIn = (): JSX.Element => {
         <form className={styles["SignIn__form"]} onSubmit={onSubmit}>
           <FormControl
             label={MESSAGES.emailLabel}
-            error={formErrors.phone?.message || error?.response?.data.message}
+            error={
+              formErrors.phone?.message ||
+              error?.response?.data.errors?.phone?.message ||
+              error?.response?.data.message
+            }
           >
             <TextInputPhone
               type="tel"
               placeholder={MESSAGES.emailPlaceholder}
+              maxLength={10}
               error={Boolean(
                 formErrors.phone?.message || error?.response?.data.message
               )}

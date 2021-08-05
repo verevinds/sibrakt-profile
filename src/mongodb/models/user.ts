@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
-const validator = require("validator");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+import validator from "validator";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 
 var Schema = mongoose.Schema;
 
@@ -33,6 +33,11 @@ var userSchema = new Schema({
   phone: {
     type: String,
     required: true,
+    validate: (value: string) => {
+      if (!validator.isMobilePhone(value)) {
+        throw { message: "Неверный формат номера телефона" };
+      }
+    },
   },
   bornAt: {
     type: Date,
@@ -71,7 +76,7 @@ userSchema.pre("save", async function (next) {
 userSchema.methods.generateAuthToken = async function () {
   // Generate an auth token for the user
   const user = this;
-  const token = jwt.sign({ _id: user._id }, process.env.SECRET_KEY);
+  const token = jwt.sign({ _id: user._id }, process.env.SECRET_KEY!);
   //@ts-ignore
   user.tokens = user.tokens.concat({ token });
   await user.save();
