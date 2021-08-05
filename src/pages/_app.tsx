@@ -11,6 +11,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "src/styles/global.css";
 import "normalize.css/normalize.css";
 
+import "src/styles/nprogress.css";
+
 const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME;
 
 export const queryClient = new QueryClient();
