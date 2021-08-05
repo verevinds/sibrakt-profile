@@ -6,7 +6,7 @@ import jwt from "jsonwebtoken";
 var Schema = mongoose.Schema;
 
 var userSchema = new Schema({
-  userName: {
+  lastName: {
     type: String,
   },
   firstName: {
@@ -54,7 +54,7 @@ var userSchema = new Schema({
       },
     },
   ],
-  createAt: {
+  createdAt: {
     type: Date,
     default: Date.now,
   },

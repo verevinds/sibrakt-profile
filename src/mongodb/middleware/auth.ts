@@ -5,10 +5,11 @@ import User from "src/mongodb/models/user";
 type Handler = (req: NextApiRequest, res: NextApiResponse) => Promise<void>;
 export const auth =
   (handler: Handler) => async (req: NextApiRequest, res: NextApiResponse) => {
-    //@ts-ignore
-    const token = req.headers["authorization"].replace("Bearer ", "");
-    const data = jwt.verify(token, process.env.SECRET_KEY!);
     try {
+      //@ts-ignore
+      const token = req.headers["authorization"].replace("Bearer ", "");
+      const data = jwt.verify(token, process.env.SECRET_KEY!);
+
       //@ts-ignore
       const user = await User.findOne({ _id: data._id, "tokens.token": token });
       if (!user) {
@@ -20,6 +21,6 @@ export const auth =
       req.token = token;
       handler(req, res);
     } catch (error) {
-      res.status(401).send({ error: "Not authorized to access this resource" });
+      res.status(401).send({ error: "Авторизируйтесь, чтобы получить доступ" });
     }
   };
