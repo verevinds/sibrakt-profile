@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 
 import Logo from "src/components/logo";
 import TextInput from "src/components/text-input";
+import TextInputPassword from "../text-input-password";
 import Button from "src/components/button";
 import FormControl from "src/components/form-control";
 
@@ -15,7 +16,7 @@ import { SignInRequest } from "src/types/auth";
 import MESSAGES from "./sign-in.messages";
 
 import styles from "./signin.module.css";
-import { Alert } from "react-bootstrap";
+import TextInputPhone from "../text-input-phone";
 
 const SignUp = (): JSX.Element => {
   const { error, mutate, isError: isErrorResponse } = useSignIn();
@@ -28,18 +29,14 @@ const SignUp = (): JSX.Element => {
     mode: "onChange",
   });
 
-  const email = register("email", {
-    required: MESSAGES.emailRequired,
+  const phone = register("phone", {
+    required: MESSAGES.phoneRequired,
   });
   const password = register("password", {
     required: MESSAGES.passwordRequired,
   });
 
   const onSubmit = handleSubmit((data) => mutate(data));
-
-  const isError = Boolean(
-    isErrorResponse || formErrors.email || formErrors.password
-  );
 
   return (
     <main className={styles["SignIn"]}>
@@ -51,14 +48,13 @@ const SignUp = (): JSX.Element => {
         <h1 className={styles["SignIn__title"]}>{MESSAGES.pageTitle}</h1>
         <form className={styles["SignIn__form"]} onSubmit={onSubmit}>
           <FormControl
-            label={MESSAGES.emailLabel}
-            error={formErrors.email?.message || error?.response?.data.message}
+            label={MESSAGES.phoneLabel}
+            error={formErrors.phone?.message || error?.response?.data.message}
           >
-            <TextInput
-              type="email"
-              placeholder={MESSAGES.emailPlaceholder}
-              error={isError}
-              {...email}
+            <TextInputPhone
+              placeholder={MESSAGES.phonePlaceholder}
+              error={Boolean(isErrorResponse || formErrors.phone)}
+              {...phone}
             />
           </FormControl>
 
@@ -66,10 +62,10 @@ const SignUp = (): JSX.Element => {
             label={MESSAGES.passwordLabel}
             error={formErrors.password?.message}
           >
-            <TextInput
+            <TextInputPassword
               type="password"
               placeholder={MESSAGES.passwordPlaceholder}
-              error={isError}
+              error={Boolean(isErrorResponse || formErrors.password)}
               {...password}
             />
           </FormControl>

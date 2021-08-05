@@ -13,17 +13,18 @@ import styles from "./signup.module.css";
 import { useSignUp } from "src/hooks/api/useSignUp";
 import { useForm } from "react-hook-form";
 import { SignUpRequest } from "src/types/auth";
+import TextInputPhone from "../text-input-phone";
+import TextInputPassword from "../text-input-password";
 
 const SignIn = (): JSX.Element => {
   const {
     register,
     handleSubmit,
-    formState: { errors: formErrors, isValid },
-    setError,
+    formState: { errors: formErrors },
   } = useForm<SignUpRequest & { submitPassword: string }>({ mode: "onChange" });
   const { mutate, error } = useSignUp();
 
-  const email = register("email", {
+  const phone = register("phone", {
     required: MESSAGES.emailRequired,
   });
   const password = register("password", {
@@ -46,15 +47,15 @@ const SignIn = (): JSX.Element => {
         <form className={styles["SignIn__form"]} onSubmit={onSubmit}>
           <FormControl
             label={MESSAGES.emailLabel}
-            error={formErrors.email?.message || error?.response?.data.message}
+            error={formErrors.phone?.message || error?.response?.data.message}
           >
-            <TextInput
-              type="email"
+            <TextInputPhone
+              type="tel"
               placeholder={MESSAGES.emailPlaceholder}
               error={Boolean(
-                formErrors.email?.message || error?.response?.data.message
+                formErrors.phone?.message || error?.response?.data.message
               )}
-              {...email}
+              {...phone}
             />
           </FormControl>
 
@@ -62,7 +63,7 @@ const SignIn = (): JSX.Element => {
             label={MESSAGES.passwordLabel}
             error={formErrors.password?.message}
           >
-            <TextInput
+            <TextInputPassword
               type="password"
               placeholder={MESSAGES.passwordPlaceholder}
               error={Boolean(formErrors.password?.message)}
@@ -74,7 +75,7 @@ const SignIn = (): JSX.Element => {
             label={MESSAGES.submitPasswordLabel}
             error={formErrors.submitPassword?.message}
           >
-            <TextInput
+            <TextInputPassword
               type="password"
               placeholder={MESSAGES.submitPasswordPlaceholder}
               error={Boolean(formErrors.submitPassword?.message)}

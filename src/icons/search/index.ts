@@ -1,1 +1,1 @@
-export { default } from './search.svg'
+export { default } from './search'

@@ -1,8 +1,8 @@
 export default {
   pageTitle: "Авторизация",
-  emailLabel: "Электронная почта",
-  emailPlaceholder: "Введите электронную почту",
-  emailRequired: "Ввод электронной почты обязателен",
+  phoneLabel: "Номер телефона",
+  phonePlaceholder: "Введите номер телефона",
+  phoneRequired: "Ввод номера телефона обязателен",
   passwordLabel: "Пароль",
   passwordPlaceholder: "Введите пароль",
   passwordRequired: "Ввод пароль обязателен",

@@ -2,7 +2,7 @@ import React from "react";
 import cn from "classnames";
 
 import Calendar from "./calendar.svg";
-import Hint from "./hint.svg";
+import Hint from "./hint";
 import SearchIcon from "src/icons/search";
 
 import stylesTextInputBase from "./text-input-base.module.css"

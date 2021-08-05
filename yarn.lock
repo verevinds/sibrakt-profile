@@ -1377,6 +1377,11 @@ kareem@2.3.2:
   resolved "https://registry.yarnpkg.com/kareem/-/kareem-2.3.2.tgz#78c4508894985b8d38a0dc15e1a8e11078f2ca93"
   integrity sha512-STHz9P7X2L4Kwn72fA4rGyqyXdmrMSdxqHx9IXon/FXluXieaFA6KJ2upcHAHxQPQ0LeM/OjLrhFxifHewOALQ==
 
+libphonenumber-js@^1.9.23:
+  version "1.9.23"
+  resolved "https://registry.yarnpkg.com/libphonenumber-js/-/libphonenumber-js-1.9.23.tgz#e28babdaaaf7e09fbaf23a1c714166fa63001ea3"
+  integrity sha512-+qWSwPyJWSV9ukb7Iu21WpWEP7irFWR1ojoYykL2itAfXKj9FjsTjS6PPZoPUOZk+1kxliHjwsilqA1TNeOhuQ==
+
 loader-utils@1.2.3:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/loader-utils/-/loader-utils-1.2.3.tgz#1ff5dc6911c9f0a062531a4c04b609406108c2c7"
@@ -2406,6 +2411,11 @@ react-refresh@0.8.3:
   version "0.8.3"
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.8.3.tgz#721d4657672d400c5e3c75d063c4a85fb2d5d68f"
   integrity sha512-X8jZHc7nCMjaCqoU+V2I0cOhNW+QMBwSUkeXnTi8IPe6zaRWfn60ZzvFDZqWPfmSJfjub7dDW1SP0jaHWLu/hg==
+
+react-tiny-popover@^6.0.10:
+  version "6.0.10"
+  resolved "https://registry.yarnpkg.com/react-tiny-popover/-/react-tiny-popover-6.0.10.tgz#6167a1b4a1ae6cf847d2909057defd00d95d726c"
+  integrity sha512-ECMucd701SxWHGa+2YuVvccCxxTjmhomcD0ZYTF+Qmi5qNAj8pdlExFN+k+p1G78QTYIGPGNLocxRb9f6cZ0Mw==
 
 react-transition-group@^4.4.1:
   version "4.4.2"
