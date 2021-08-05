@@ -18,11 +18,11 @@ import styles from "./signin.module.css";
 import { Alert } from "react-bootstrap";
 
 const SignUp = (): JSX.Element => {
-  const { error, mutate, isError } = useSignIn();
+  const { error, mutate, isError: isErrorResponse } = useSignIn();
   const {
     register,
     handleSubmit,
-    formState: { errors: formErrors, isValid },
+    formState: { errors: formErrors },
     setError,
   } = useForm<SignInRequest & { submitPassword: string }>({
     mode: "onChange",
@@ -36,6 +36,11 @@ const SignUp = (): JSX.Element => {
   });
 
   const onSubmit = handleSubmit((data) => mutate(data));
+
+  const isError = Boolean(
+    isErrorResponse || formErrors.email || formErrors.password
+  );
+
   return (
     <main className={styles["SignIn"]}>
       <section className={styles["SignIn__header"]}>
@@ -47,14 +52,12 @@ const SignUp = (): JSX.Element => {
         <form className={styles["SignIn__form"]} onSubmit={onSubmit}>
           <FormControl
             label={MESSAGES.emailLabel}
-            error={formErrors.email?.message}
+            error={formErrors.email?.message || error?.response?.data.message}
           >
             <TextInput
               type="email"
               placeholder={MESSAGES.emailPlaceholder}
-              error={Boolean(
-                formErrors.email?.message || error?.response?.data.message
-              )}
+              error={isError}
               {...email}
             />
           </FormControl>
@@ -66,11 +69,10 @@ const SignUp = (): JSX.Element => {
             <TextInput
               type="password"
               placeholder={MESSAGES.passwordPlaceholder}
-              error={Boolean(formErrors.password?.message)}
+              error={isError}
               {...password}
             />
           </FormControl>
-          {isError && <Alert>{error?.response?.data.message}</Alert>}
 
           <Button className={styles["SignIn__submit"]} size="full-width">
             {MESSAGES.signIn}

@@ -16,8 +16,10 @@ import ActiveLink from "src/components/active-link/active-link";
 import { useMeProfile } from "src/hooks/useMeProfile";
 
 const Header = (): JSX.Element => {
-  const { accessToken, removeAccessToken } = useAccessToken();
-useMeProfile();
+  const { accessToken, removeAccessToken, isAccessToken } = useAccessToken();
+  const { data } = useMeProfile();
+  const isAdmin = data?.role === "admin";
+
   return (
     <header className={cn(styles["Header"])}>
       <nav className={styles["Header__navigation"]}>
@@ -27,18 +29,22 @@ useMeProfile();
         >
           <a>Зачет дня</a>
         </ActiveLink>
-        <ActiveLink
-          href={ROUTE_PROFILE}
-          activeClassName={styles["Header__link_active"]}
-        >
-          <a>Личный кабинет</a>
-        </ActiveLink>
-        <ActiveLink
-          href={ROUTE_ADMIN}
-          activeClassName={styles["Header__link_active"]}
-        >
-          <a>Панель администратора</a>
-        </ActiveLink>
+        {isAccessToken && (
+          <ActiveLink
+            href={ROUTE_PROFILE}
+            activeClassName={styles["Header__link_active"]}
+          >
+            <a>Личный кабинет</a>
+          </ActiveLink>
+        )}
+        {isAdmin && (
+          <ActiveLink
+            href={ROUTE_ADMIN}
+            activeClassName={styles["Header__link_active"]}
+          >
+            <a>Панель администратора</a>
+          </ActiveLink>
+        )}
       </nav>
       <div className={styles["Header__exit"]}>
         {accessToken ? (

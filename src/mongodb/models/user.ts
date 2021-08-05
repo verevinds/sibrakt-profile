@@ -82,11 +82,11 @@ userSchema.statics.findByCredentials = async (email, password) => {
   // Search for a user by email and password.
   const user = await User.findOne({ email });
   if (!user) {
-    throw { message: "Неверно введены логин или пароль" };
+    throw { message: "Неверный логин или пароль" };
   }
   const isPasswordMatch = await bcrypt.compare(password, user.password);
   if (!isPasswordMatch) {
-    throw { message: "Неверно введены логин или пароль" };
+    throw { message: "Неверный логин или пароль" };
   }
   return user;
 };

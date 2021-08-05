@@ -5,7 +5,7 @@ export default {
   emailRequired: "Ввод электронной почты обязателен",
   passwordLabel: "Пароль",
   passwordPlaceholder: "Введите пароль",
-  passwordRequired: "Пароль обязателен",
+  passwordRequired: "Ввод пароль обязателен",
   signIn: "Войти",
   navLinkBackText: "Перейти к зачетам",
   navLinkSignUpText: "Зарегистрироваться",
