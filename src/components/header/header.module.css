@@ -31,9 +31,7 @@
   border: 0;
   background: none;
 }
-.Header__link_active {
-  color: var(--primary-70);
-}
+
 
 @media (--tablet) {
   .Header__navigation {

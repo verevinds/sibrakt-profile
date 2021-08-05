@@ -1,53 +1,27 @@
 import cn from "classnames";
 
 import Button from "src/components/button";
+import ActiveLink from "src/components/active-link/active-link";
+import NavLinks from "src/components/nav-links/nav-links";
 
 import { useAccessToken } from "src/hooks/useAccessToken";
 
 import {
-  ROUTE_ADMIN,
-  ROUTE_DEFAULT,
-  ROUTE_PROFILE,
   ROUTE_SIGN_IN,
 } from "src/utils/route";
 
 import styles from "./header.module.css";
-import ActiveLink from "src/components/active-link/active-link";
-import { useMeProfile } from "src/hooks/useMeProfile";
 
 const Header = (): JSX.Element => {
-  const { accessToken, removeAccessToken, isAccessToken } = useAccessToken();
-  const { data } = useMeProfile();
-  const isAdmin = data?.role === "admin";
+  const { removeAccessToken, isAccessToken } = useAccessToken();
 
   return (
     <header className={cn(styles["Header"])}>
       <nav className={styles["Header__navigation"]}>
-        <ActiveLink
-          href={ROUTE_DEFAULT}
-          activeClassName={styles["Header__link_active"]}
-        >
-          <a>Зачет дня</a>
-        </ActiveLink>
-        {isAccessToken && (
-          <ActiveLink
-            href={ROUTE_PROFILE}
-            activeClassName={styles["Header__link_active"]}
-          >
-            <a>Личный кабинет</a>
-          </ActiveLink>
-        )}
-        {isAdmin && (
-          <ActiveLink
-            href={ROUTE_ADMIN}
-            activeClassName={styles["Header__link_active"]}
-          >
-            <a>Панель администратора</a>
-          </ActiveLink>
-        )}
+        <NavLinks />
       </nav>
       <div className={styles["Header__exit"]}>
-        {accessToken ? (
+        {isAccessToken ? (
           <Button variant="link" onClick={removeAccessToken}>
             Выйти
           </Button>

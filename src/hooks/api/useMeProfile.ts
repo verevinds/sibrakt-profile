@@ -1,13 +1,9 @@
-import { ApiError } from "next/dist/next-server/server/api-utils";
+import type { ApiError } from "next/dist/next-server/server/api-utils";
 import { useQuery, UseQueryResult } from "react-query";
-import { useRequest } from "./useRequest";
-type shortProfile = {
-  id: string;
-  role: "admin" | "user";
-  email: string;
-  score: number;
-};
-export const useMeProfile = (): UseQueryResult<shortProfile, ApiError> => {
+import type { ProfileShort } from "src/types/user";
+import { useRequest } from "src/hooks/useRequest";
+
+export const useMeProfile = (): UseQueryResult<ProfileShort, ApiError> => {
   const request = useRequest();
 
   async function profile() {
