@@ -6,6 +6,8 @@ export default (req: NextApiRequest) => ({
   //@ts-ignore
   role: req.user.role,
   //@ts-ignore
+  phone: req.user.phone,
+  //@ts-ignore
   email: req.user.email,
   //@ts-ignore
   score: req.user.score,
