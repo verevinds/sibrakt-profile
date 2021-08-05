@@ -10,7 +10,12 @@ export default async (req: NextApiRequest) => {
   const user = await User.findOne({ email, password }).select("-__v");
 
   if (user) {
-    return { accessToken: jwt.sign({ userId: user.id }, SECRET_KEY) };
+    return {
+      accessToken: jwt.sign(
+        { userId: user.id, role: user.role },
+        SECRET_KEY
+      ),
+    };
   }
 
   throw { message: "Ошибка авторизации" };

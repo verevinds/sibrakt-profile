@@ -18,6 +18,6 @@ export default async (user: User) => {
   return {
     ...newUser._doc,
     id: newUser._doc._id,
-    accessToken: jwt.sign({ userId: newUser.id }, SECRET_KEY),
+    accessToken: jwt.sign({ userId: newUser.id, role: newUser.role }, SECRET_KEY),
   };
 };

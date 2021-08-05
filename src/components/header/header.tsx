@@ -1,25 +1,54 @@
-import NavLink from "next/link";
 import cn from "classnames";
 
 import Button from "src/components/button";
 
 import { useAccessToken } from "src/hooks/useAccessToken";
 
-import { ROUTE_SIGN_IN } from "src/utils/route";
+import {
+  ROUTE_ADMIN,
+  ROUTE_DEFAULT,
+  ROUTE_PROFILE,
+  ROUTE_SIGN_IN,
+} from "src/utils/route";
 
 import styles from "./header.module.css";
+import ActiveLink from "src/components/active-link/active-link";
+import { useMeProfile } from "src/hooks/useMeProfile";
 
 const Header = (): JSX.Element => {
   const { accessToken, removeAccessToken } = useAccessToken();
+useMeProfile();
   return (
     <header className={cn(styles["Header"])}>
-      <div className={styles["Header__user"]}>
+      <nav className={styles["Header__navigation"]}>
+        <ActiveLink
+          href={ROUTE_DEFAULT}
+          activeClassName={styles["Header__link_active"]}
+        >
+          <a>Зачет дня</a>
+        </ActiveLink>
+        <ActiveLink
+          href={ROUTE_PROFILE}
+          activeClassName={styles["Header__link_active"]}
+        >
+          <a>Личный кабинет</a>
+        </ActiveLink>
+        <ActiveLink
+          href={ROUTE_ADMIN}
+          activeClassName={styles["Header__link_active"]}
+        >
+          <a>Панель администратора</a>
+        </ActiveLink>
+      </nav>
+      <div className={styles["Header__exit"]}>
         {accessToken ? (
           <Button variant="link" onClick={removeAccessToken}>
             Выйти
           </Button>
         ) : (
-          <NavLink href={ROUTE_SIGN_IN}>Войти в систему</NavLink>
+          <ActiveLink href={ROUTE_SIGN_IN}>
+            <a>Войти в систему</a>
+          </ActiveLink>
         )}
       </div>
       <button
