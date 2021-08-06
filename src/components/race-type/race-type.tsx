@@ -9,29 +9,48 @@ import TextInput from "src/components/text-input";
 import styles from "./race-type.module.css";
 import { useRaceTypeView } from "src/hooks/api/useRaceTypeView";
 import { ListGroup, ListGroupItem } from "react-bootstrap";
-import { useRaceTypeAdd } from "src/hooks/api/useRaceTypeAdd";
+import { useRaceType } from "src/hooks/api/useRaceType";
+import type { RaceTypeData } from "src/types/race";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
-type RaceType = {
-  name: string;
-};
 const RaceType = (): JSX.Element => {
-  const { mutate } = useRaceTypeAdd();
+  const { mutate } = useRaceType();
   const { data, refetch } = useRaceTypeView();
   const {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm<RaceType>();
+    reset
+  } = useForm<Pick<RaceTypeData, "name">>();
 
   const name = register("name", { required: MESSAGES.nameRequired });
 
   const onSumbit = handleSubmit(async (value) => {
-    mutate(value, {
-      onSuccess: () => {
-        refetch();
-      },
-    });
+    mutate(
+      { payload: value },
+      {
+        onSuccess: () => {
+          refetch();
+          reset();
+        },
+      }
+    );
   });
+
+  const onDelete = (value: Pick<RaceTypeData, "id">) => () => {
+    mutate(
+      {
+        payload: value,
+        method: "delete",
+      },
+      {
+        onSuccess: () => {
+          refetch();
+        },
+      }
+    );
+  };
 
   return (
     <>
@@ -55,7 +74,12 @@ const RaceType = (): JSX.Element => {
         <h4>{MESSAGES.raceTypeSubTitle}</h4>
         <ListGroup variant="flush">
           {data?.map((raceType) => (
-            <ListGroupItem key={raceType.id}>{raceType.name}</ListGroupItem>
+            <ListGroupItem key={raceType.id} className={styles['RaceType__raceTypeListItem']}>
+              <span>
+              {raceType.name}
+              </span>
+              <Button variant='link' onClick={onDelete({ id: raceType.id })}><FontAwesomeIcon icon={faTrash} color={'red'}/></Button>
+            </ListGroupItem>
           ))}
         </ListGroup>
       </section>

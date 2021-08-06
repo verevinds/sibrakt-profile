@@ -14,6 +14,13 @@
 .RaceType__raceTypeList {
   padding: 20px;
 }
+.RaceType__raceTypeListItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  word-break: break-all;
+}
 @media (--mobile) {
   .RaceType__form {
     width: 280px;
