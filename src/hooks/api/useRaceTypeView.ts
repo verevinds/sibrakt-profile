@@ -1,19 +1,18 @@
 import type { ApiError } from "next/dist/next-server/server/api-utils";
 import { useQuery, UseQueryResult } from "react-query";
-import type { ProfileShort } from "src/types/user";
 import { useRequest } from "src/hooks/useRequest";
-import { RaceType } from "src/types/race";
+import { RaceTypeData } from "src/types/race";
 
-export const useRaceTypeView = (): UseQueryResult<RaceType[], ApiError> => {
+export const useRaceTypeView = (): UseQueryResult<RaceTypeData[], ApiError> => {
   const request = useRequest();
 
-  async function profile() {
+  async function queryFn() {
     const { data } = await request.get("/api/race-type/all");
 
     return data;
   }
 
-  return useQuery("race-type", profile, {
+  return useQuery("race-type", queryFn, {
     retry: false,
     keepPreviousData: true,
   });

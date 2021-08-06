@@ -7,11 +7,9 @@ var Schema = mongoose.Schema;
 var userSchema = new Schema({
   firstName: {
     type: String,
-    required: true,
   },
   lastName: {
     type: String,
-    required: true,
   },
   phone: {
     type: String,
@@ -23,7 +21,7 @@ var userSchema = new Schema({
     },
     ref: "User",
   },
-  raceTypeId: { type: Schema.Types.ObjectId, ref: "RaceType" },
+  raceTypeId: { type: Schema.Types.ObjectId, ref: "RaceType", required: true },
   time: {
     type: Number,
     required: true,

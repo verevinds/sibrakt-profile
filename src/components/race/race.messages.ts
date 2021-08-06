@@ -3,12 +3,18 @@ export default {
 
   raceTitle: "Добавить заезд",
 
+  firstNameLabel: "Имя",
+  firstNamePlaceholder: "Иван",
+
+  lastNameLabel: "Фамилия",
+  lastNamePlaceholder: "Иванов",
+
   phoneLabel: "Номер телефона",
-  phonePlaceholder: "Введите номер телефона клиента",
+  phonePlaceholder: "9030300303",
   phoneRequired: "Номер телефона обязателен",
 
   timeLabel: "Результат заезда",
-  timePlaceholder: "Введите лучшее время гонщика",
+  timePlaceholder: "21.94",
   timeRequired: "Результат заезда обязателен",
 
   raceTypeLabel: "Вид зачёта",

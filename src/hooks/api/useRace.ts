@@ -1,19 +1,17 @@
 import { AxiosError } from "axios";
-import { useRouter } from "next/router";
 import { useMutation } from "react-query";
 
 import { useRequest } from "src/hooks/useRequest";
-import { SignUpRequest } from "src/types/auth";
 import { ApiError } from "src/types/error";
 
-import { RaceTypeData } from "src/types/race";
+import { RaceRequest, RaceTypeData } from "src/types/race";
 
 type ValueRequest = {
-  payload: Pick<RaceTypeData, "name"> | Pick<RaceTypeData, "_id">;
+  payload: RaceRequest;
   method?: Method;
 };
 type Method = "post" | "delete";
-export const useRaceType = () => {
+export const useRace = () => {
   const request = useRequest();
 
   async function mutationFn({ payload, method = "post" }: ValueRequest) {
@@ -21,7 +19,8 @@ export const useRaceType = () => {
       delete: { data: payload },
       post: payload,
     };
-    const { data } = await request[method]("/api/race-type", config[method]);
+
+    const { data } = await request[method]("/api/race", config[method]);
 
     return data;
   }

@@ -4,6 +4,15 @@ export type RaceTypeData = {
   createdAt: string;
 };
 
+export type RaceData = {
+  createdAt: string;
+  _id: string;
+  firstName: string | undefined;
+  lastName: string | undefined;
+  phone: string;
+  time: number;
+  raceTypeId: Omit<RaceTypeData, "createdAt">;
+};
 export type RaceRequest = {
   firstName?: string;
   lastName?: string;

@@ -17,14 +17,14 @@ export const useSignUp = () => {
   const { setAccessToken } = useAccessToken();
   const router = useRouter();
 
-  async function signUp (value: SignUpRequest) {
+  async function mutationFn(value: SignUpRequest) {
     const { data } = await request.post("/api/auth/signup", value);
 
     return data;
   };
 
   return useMutation<AuthResponse, AxiosError<ApiError>, SignUpRequest>(
-    signUp,
+    mutationFn,
     {
       onSuccess: ({ accessToken }) => {
         setAccessToken(accessToken);

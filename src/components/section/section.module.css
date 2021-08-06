@@ -4,3 +4,12 @@
 
   border-top: 2px solid var(--black-5);
 }
+
+@media (--mobile) {
+  .Section {
+    width: 100%;
+    padding: 10px;
+
+    border-top: 2px solid var(--black-5);
+  }
+}
