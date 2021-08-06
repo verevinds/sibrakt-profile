@@ -16,14 +16,16 @@ const AdminSidebarMenuLink = (props: AdminSidebarMenuLinkProps): JSX.Element | n
     return null;
   }
 
-  const handleHide = () => toggleIsShow((value) => !value);
+  const onHide = () => toggleIsShow(false);
+  const onShow = () => toggleIsShow(true);
 
   return (
     <ActiveLink
       href={props.href}
+      exec={true}
       activeClassName={styles["AdminSideMenuLink_active"]}
     >
-      <a className={styles["AdminSideMenuLink"]} onClick={handleHide}>
+      <a className={styles["AdminSideMenuLink"]} onClick={onHide}>
         <Popover
           content={
             <span
@@ -40,8 +42,8 @@ const AdminSidebarMenuLink = (props: AdminSidebarMenuLinkProps): JSX.Element | n
         >
           <span
             className={styles["AdminSideMenu__icon"]}
-            onMouseEnter={handleHide}
-            onMouseLeave={handleHide}
+            onMouseEnter={onShow}
+            onMouseLeave={onHide}
           >
             <FontAwesomeIcon icon={props.icon} />
           </span>

@@ -11,7 +11,9 @@
 
   color: var(--black-70);
 }
-
+.AdminSideMenuLink.AdminSideMenuLink_active:hover {
+  color: var(--white-100);
+}
 .AdminSideMenuLink_active {
   color: var(--white-100);
   border-radius: 0;

@@ -7,7 +7,7 @@ const AdminSidebarMenu = () => {
   return (
     <div className={styles["AdminSidebarMenu"]}>
       {ADMIN_LINKS.map((link) => (
-        <AdminSidebarMenuLink {...link} />
+        <AdminSidebarMenuLink {...link} key={link.href} />
       ))}
     </div>
   );
