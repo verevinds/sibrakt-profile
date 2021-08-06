@@ -35,6 +35,9 @@ html {
   font-size: 14px;
 }
 h1 {
+  font-weight: 600;
+}
+h1, h2 {
   color: var(--text-color);
 }
 a {

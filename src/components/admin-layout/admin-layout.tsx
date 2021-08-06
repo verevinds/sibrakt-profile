@@ -5,10 +5,10 @@ import styles from "./admin-layout.module.css";
 const AdminLayout = ({ children }: PropsWithChildren<unknown>) => {
   return (
     <main className={styles["AdminLayout"]}>
-      <aside>
+      <aside className={styles["AdminLayout__sidebar"]}>
         <AdminSidebarMenu />
       </aside>
-      <article>{children}</article>
+      <article className={styles["AdminLayout__content"]}>{children}</article>
     </main>
   );
 };

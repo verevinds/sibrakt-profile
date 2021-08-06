@@ -1,12 +1,11 @@
 .AdminSideMenuLink {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: left;
 
-  margin: 10px 10px 0 10px;
+  margin: 10px;
   padding: 0;
 
-  transition: all ease-in-out 200ms;
   white-space: nowrap;
 
   color: var(--black-70);
@@ -21,6 +20,9 @@
   background-color: var(--primary-100);
 }
 
+.AdminSideMenuLink:first-child {
+  margin-top: 20px;
+}
 .AdminSideMenuLink, .AdminSideMenu__icon {
   width: 40px;
   min-width: 40px;
@@ -49,4 +51,11 @@
   background-color: #fff;
   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, .2);
   box-shadow: rgba(0, 0, 0, .1) 0 20px 25px -5px, rgba(0, 0, 0, .04) 0 10px 10px -5px;
+}
+
+@media (--mobile) {
+  .AdminSideMenuLink:first-child {
+    margin-top: 10px;
+    margin-left: 20px;
+  }
 }
