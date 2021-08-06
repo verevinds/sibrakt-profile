@@ -1,0 +1,17 @@
+.WalletCardMarkText {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+
+  display: flex;
+
+  margin: 5px 0;
+}
+
+.WalletCardMarkText__icon {
+  align-self: baseline;
+
+  height: 100%;
+  margin-right: 8px;
+  padding-top: 3px;
+}
