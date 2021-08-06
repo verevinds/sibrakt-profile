@@ -1,20 +1,20 @@
 import { HTMLAttributes, PropsWithChildren } from "react";
 import cn from "classnames";
 
-import styles from "./title.module.css";
+import styles from "./section.module.css";
 
 type Props = HTMLAttributes<HTMLDivElement>;
 
-const Title = ({
+const Section = ({
   children,
   className,
   ...restProps
 }: PropsWithChildren<Props>) => {
   return (
-    <h1 {...restProps} className={cn(styles["Title"], className)}>
+    <section {...restProps} className={cn(styles["Section"], className)}>
       {children}
-    </h1>
+    </section>
   );
 };
 
-export default Title;
+export default Section;

@@ -1,0 +1,6 @@
+.Section {
+  width: 100%;
+  padding: 20px;
+
+  border-top: 2px solid var(--black-5);
+}

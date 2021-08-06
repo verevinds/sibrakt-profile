@@ -13,6 +13,8 @@ import { useRaceType } from "src/hooks/api/useRaceType";
 import type { RaceTypeData } from "src/types/race";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import Section from "../section/section";
+import Title from "../title";
 
 const RaceType = (): JSX.Element => {
   const { mutate } = useRaceType();
@@ -54,9 +56,9 @@ const RaceType = (): JSX.Element => {
 
   return (
     <>
-      <h1 className={styles["RaceType__title"]}>{MESSAGES.titlePage}</h1>
+      <Title>{MESSAGES.titlePage}</Title>
 
-      <section className={styles["RaceType__block"]}>
+      <Section>
         <h2>{MESSAGES.raceTypeTitle}</h2>
         <form onSubmit={onSumbit} className={styles["RaceType__form"]}>
           <FormControl error={errors.name?.message} label={MESSAGES.nameLabel}>
@@ -68,7 +70,7 @@ const RaceType = (): JSX.Element => {
           </FormControl>
           <Button>{MESSAGES.addButtonText}</Button>
         </form>
-      </section>
+      </Section>
 
       <section className={styles["RaceType__raceTypeList"]}>
         <h4>{MESSAGES.raceTypeSubTitle}</h4>

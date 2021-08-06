@@ -1,0 +1,25 @@
+.Race__form {
+  display: flex;
+  flex-wrap: wrap;
+}
+.Race__formItem {
+  flex: 1 1 auto;
+
+  margin: 10px;
+}
+.Race__formItem:first-child {
+  margin-left: 0;
+}
+
+.Race__formItem:last-child {
+  margin-right: 0;
+}
+
+@media (--mobile) {
+  .Race__formItem {
+    margin: 5px 0;
+  }
+  .Race__formItem:first-child {
+    margin-top: 0;
+  }
+}
