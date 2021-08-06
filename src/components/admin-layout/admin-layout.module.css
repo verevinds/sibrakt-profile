@@ -1,0 +1,6 @@
+.AdminLayout {
+  display: grid;
+
+  grid-column-gap: 10px;
+  grid-template-columns: min-content max-content;
+}

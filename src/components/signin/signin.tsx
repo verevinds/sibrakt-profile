@@ -52,6 +52,7 @@ const SignUp = (): JSX.Element => {
             error={formErrors.phone?.message || error?.response?.data.message}
           >
             <TextInputPhone
+              maxLength={10}
               placeholder={MESSAGES.phonePlaceholder}
               error={Boolean(isErrorResponse || formErrors.phone)}
               {...phone}

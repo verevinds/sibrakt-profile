@@ -1,3 +1,4 @@
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { UserRole } from "./user";
 
 export type NavLinks = {
@@ -8,3 +9,9 @@ export type NavLinks = {
   withLogin: boolean;
   exec?: boolean;
 }[];
+
+export type AdminSidebarMenuLinkProps = {
+  href: string;
+  hits: string;
+  icon: IconProp;
+};
