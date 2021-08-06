@@ -15,10 +15,5 @@ export default async () => {
     .sort("time");
     console.log(race)
 
-  return race.map((el: any) => {
-    const id = el.id;
-    delete el._doc._id;
-
-    return { id, ...el._doc };
-  });
+  return race;
 };

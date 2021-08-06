@@ -1,5 +1,5 @@
 export type RaceTypeData = {
   name: string;
-  id: string;
+  _id: string;
   createdAt: string;
-}
+};

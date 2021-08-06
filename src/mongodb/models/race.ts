@@ -23,6 +23,7 @@ var userSchema = new Schema({
     },
     ref: "User",
   },
+  raceTypeId: { type: Schema.Types.ObjectId, ref: "RaceType" },
   time: {
     type: Number,
     required: true,

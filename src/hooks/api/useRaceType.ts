@@ -9,7 +9,7 @@ import { ApiError } from "src/types/error";
 import { RaceTypeData } from "src/types/race";
 
 type ValueRequest = {
-  payload: Pick<RaceTypeData, "name"> | Pick<RaceTypeData, "id">;
+  payload: Pick<RaceTypeData, "name"> | Pick<RaceTypeData, "_id">;
   method?: Method;
 };
 type Method = "post" | "delete";

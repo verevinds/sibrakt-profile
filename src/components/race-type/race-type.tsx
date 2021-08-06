@@ -21,7 +21,7 @@ const RaceType = (): JSX.Element => {
     register,
     formState: { errors },
     handleSubmit,
-    reset
+    reset,
   } = useForm<Pick<RaceTypeData, "name">>();
 
   const name = register("name", { required: MESSAGES.nameRequired });
@@ -38,7 +38,7 @@ const RaceType = (): JSX.Element => {
     );
   });
 
-  const onDelete = (value: Pick<RaceTypeData, "id">) => () => {
+  const onDelete = (value: Pick<RaceTypeData, "_id">) => () => {
     mutate(
       {
         payload: value,
@@ -74,11 +74,14 @@ const RaceType = (): JSX.Element => {
         <h4>{MESSAGES.raceTypeSubTitle}</h4>
         <ListGroup variant="flush">
           {data?.map((raceType) => (
-            <ListGroupItem key={raceType.id} className={styles['RaceType__raceTypeListItem']}>
-              <span>
-              {raceType.name}
-              </span>
-              <Button variant='link' onClick={onDelete({ id: raceType.id })}><FontAwesomeIcon icon={faTrash} color={'red'}/></Button>
+            <ListGroupItem
+              key={raceType.id}
+              className={styles["RaceType__raceTypeListItem"]}
+            >
+              <span>{raceType.name}</span>
+              <Button variant="link" onClick={onDelete({ _id: raceType._id })}>
+                <FontAwesomeIcon icon={faTrash} color={"red"} />
+              </Button>
             </ListGroupItem>
           ))}
         </ListGroup>
