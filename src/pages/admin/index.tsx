@@ -4,7 +4,9 @@ import AppLayout from "src/components/app-layout/app-layout";
 export default function AdminPage() {
   return (
     <AppLayout>
-      <AdminLayout>Content</AdminLayout>
+      <AdminLayout>
+        <h1>Дашборд</h1>
+      </AdminLayout>
     </AppLayout>
   );
 }

@@ -4,7 +4,9 @@ import AppLayout from "src/components/app-layout/app-layout";
 export default function AdminRaceTypePage() {
   return (
     <AppLayout>
-      <AdminLayout>Content</AdminLayout>
+      <AdminLayout>
+        <h1>Настройка заездов</h1>
+      </AdminLayout>
     </AppLayout>
   );
 }
