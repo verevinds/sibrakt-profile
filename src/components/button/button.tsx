@@ -8,6 +8,7 @@ export interface ButtonProps {
   loading?: boolean;
   variant?: "default" | "primary" | "outline" | "link";
   size?: "large" | "small" | "full-width";
+  isActive?: boolean;
 }
 
 const Button = React.forwardRef<
@@ -20,11 +21,13 @@ const Button = React.forwardRef<
     size,
     children,
     className,
+    isActive,
     title,
     ...otherProps
   } = props;
 
   const btnStyle = cn(styles.Button, className, {
+    [styles["Button_active"]]: isActive,
     [styles.Button_variant_default]: variant === "default",
     [styles.Button_variant_primary]: variant === "primary",
     [styles.Button_variant_outline]: variant === "outline",

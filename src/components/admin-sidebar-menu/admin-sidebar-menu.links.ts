@@ -11,6 +11,7 @@ export const ADMIN_LINKS: AdminSidebarMenuLinkProps[] = [
     hits: "Дашборд",
     href: ROUTE_ADMIN,
     icon: faTachometerAlt,
+    exec: true,
   },
   {
     hits: "Заезды",

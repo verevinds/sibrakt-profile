@@ -34,8 +34,8 @@
 }
 
 .WalletCard_default {
-  border: solid 1px #e8edf1;
-  background-color: #f5f8fa;
+  border: solid 1px hsl(207, 24%, 93%);
+  background-color: hsl(204, 33%, 97%);
 
   --color-WalletCard: #f5f8fa;
 }

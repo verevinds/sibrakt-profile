@@ -70,6 +70,7 @@
   font-weight: 500;
 
   color: var(--primary-100);
+  border-radius: 0;
   background-color: transparent;
 }
 .Button_variant_link:not(:disabled):hover {
@@ -96,4 +97,8 @@
 }
 .Button_size_small {
   min-height: 30px;
+}
+.Button_active {
+  color: var(--primary-70);
+  box-shadow: var(--primary-70) 0 2px;
 }

@@ -11,7 +11,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     switch (req.method) {
       case "GET":
-        const races = await showAll();
+        const races = await showAll(req);
         return res.status(200).send(races);
       case "DELETE":
         const racesDelete = await deleteAll();

@@ -11,9 +11,9 @@ export default async () => {
       $lte: endOf.toJSDate(),
     },
   })
+    .populate({ path: "raceTypeId", select: "-__v -createdAt" })
     .select("-__v")
     .sort("time");
-    console.log(race)
 
   return race;
 };

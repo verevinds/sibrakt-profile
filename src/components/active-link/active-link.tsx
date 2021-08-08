@@ -28,7 +28,7 @@ const ActiveLink= ({
         ? `${childClassName} ${activeClassName}`.trim()
         : childClassName;
   } else {
-    className = asPath.startsWith(pathname)
+    className = asPath.includes(pathname)
       ? `${childClassName} ${activeClassName}`.trim()
       : childClassName;
   }

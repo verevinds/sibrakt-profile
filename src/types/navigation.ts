@@ -14,4 +14,5 @@ export type AdminSidebarMenuLinkProps = {
   href: string;
   hits: string;
   icon: IconProp;
+  exec?: boolean;
 };

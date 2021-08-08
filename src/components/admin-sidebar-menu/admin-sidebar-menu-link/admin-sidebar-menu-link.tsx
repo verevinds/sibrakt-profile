@@ -22,7 +22,7 @@ const AdminSidebarMenuLink = (props: AdminSidebarMenuLinkProps): JSX.Element | n
   return (
     <ActiveLink
       href={props.href}
-      exec={true}
+      exec={props.exec}
       activeClassName={styles["AdminSideMenuLink_active"]}
     >
       <a className={styles["AdminSideMenuLink"]} onClick={onHide}>
