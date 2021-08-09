@@ -11,27 +11,77 @@
   background-color: var(--white-100);
 }
 
-.Header__user {
-  margin-right: 40px;
-}
-
 .Header__menuButton {
-  display: none;
-
-  margin-right: 8px;
+  border: none;
+  background-color: transparent;
 }
-
-.MenuButton {
-  display: none;
-
-  padding: 12px;
+.Header__menuButton_label, .Header__menuButton_label::after, .Header__menuButton_label::before {
+  width: 20px;
+  height: 2px;
 
   cursor: pointer;
+  transition: all ease-in-out 400ms;
 
-  border: 0;
-  background: none;
+  background-color: var(--black-100);
+}
+.Header__menuButton_label::after, .Header__menuButton_label::before {
+  position: absolute;
+
+  display: block;
+
+  content: '';
+}
+.Header__menuButton_label {
+  position: relative;
+
+  margin: 10px;
+
+  border: none;
+}
+.Header__menuButton_label::after {
+  top: 6px;
 }
 
+.Header__menuButton_label::before {
+  bottom: 6px;
+}
+.Header__menuButton_open {
+  background-color: transparent;
+}
+
+.Header__menuButton_open::after {
+  transform: rotate(45deg) translateY(-8px);
+}
+
+.Header__menuButton_open::before {
+  transform: rotate(-45deg) translateY(8px);
+}
+.Header__sidebar {
+  position: fixed;
+  z-index: 50;
+  top: 60px;
+  right: -9999px;
+  bottom: 0;
+  left: 9999px;
+
+  display: flex;
+  flex-direction: column;
+
+  padding-top: 10px;
+
+  transition: all ease 600ms;
+
+  background-color: var(--white-100);
+}
+
+.Header__sidebar_open {
+  right: 0;
+  left: 0;
+}
+
+.Header__sidebarTitle {
+  margin: 20px;
+}
 
 @media (--tablet) {
   .Header__navigation {

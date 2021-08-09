@@ -4,12 +4,12 @@ import {
   faToolbox,
 } from "@fortawesome/free-solid-svg-icons";
 import { AdminSidebarMenuLinkProps } from "src/types/navigation";
-import { ROUTE_ADMIN, ROUTE_ADMIN_RACE, ROUTE_ADMIN_TYPE_RACE } from "src/utils/route";
+import { ROUTE_ADMIN_DASHBOARD, ROUTE_ADMIN_RACE, ROUTE_ADMIN_TYPE_RACE } from "src/utils/route";
 
 export const ADMIN_LINKS: AdminSidebarMenuLinkProps[] = [
   {
     hits: "Дашборд",
-    href: ROUTE_ADMIN,
+    href: ROUTE_ADMIN_DASHBOARD,
     icon: faTachometerAlt,
     exec: true,
   },
