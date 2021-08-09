@@ -12,6 +12,8 @@
 }
 
 .Header__menuButton {
+  display: none;
+
   border: none;
   background-color: transparent;
 }
@@ -87,7 +89,8 @@
   .Header__navigation {
     display: none;
   }
-  .MenuButton {
+
+  .Header__menuButton {
     display: flex;
     align-items: center;
     justify-content: center;

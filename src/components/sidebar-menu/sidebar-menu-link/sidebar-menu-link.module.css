@@ -1,4 +1,4 @@
-.AdminSideMenuLink {
+.SideMenuLink {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -10,20 +10,20 @@
 
   color: var(--black-70);
 }
-.AdminSideMenuLink.AdminSideMenuLink_active:hover {
+.SideMenuLink.SideMenuLink_active:hover {
   color: var(--white-100);
 }
-.AdminSideMenuLink_active {
+.SideMenuLink_active {
   color: var(--white-100);
   border-radius: 0;
   border-radius: 5px;
   background-color: var(--primary-100);
 }
 
-.AdminSideMenuLink:first-child {
+.SideMenuLink:first-child {
   margin-top: 20px;
 }
-.AdminSideMenuLink, .AdminSideMenu__icon {
+.SideMenuLink, .AdminSideMenu__icon {
   width: 40px;
   min-width: 40px;
   height: 40px;
@@ -33,7 +33,7 @@
 }
 
 @media (--mobile) {
-  .AdminSideMenuLink:first-child {
+  .SideMenuLink:first-child {
     margin-top: 10px;
     margin-left: 20px;
   }

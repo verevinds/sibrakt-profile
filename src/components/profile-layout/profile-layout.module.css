@@ -1,0 +1,30 @@
+.ProfileLayout {
+  display: grid;
+
+  grid-template-areas: 'sidebar content';
+  grid-template-columns: min-content 1fr;
+  grid-template-rows: 1fr;
+}
+.ProfileLayout__content {
+  height: 100vh;
+
+  grid-area: content;
+}
+.ProfileLayout__sidebar {
+  background-color: var(--background-default);
+
+  grid-area: sidebar;
+}
+
+@media (--mobile) {
+  .ProfileLayout {
+    display: grid;
+
+    grid-template-areas: 'sidebar'
+    'content';
+    grid-template-rows: min-content 1fr;
+  }
+  .ProfileLayout__sidebar {
+    width: 100vw;
+  }
+}

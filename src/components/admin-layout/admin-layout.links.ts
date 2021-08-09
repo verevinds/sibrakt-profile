@@ -3,10 +3,10 @@ import {
   faTachometerAlt,
   faToolbox,
 } from "@fortawesome/free-solid-svg-icons";
-import { AdminSidebarMenuLinkProps } from "src/types/navigation";
+import { SidebarMenuLinkProps } from "src/types/navigation";
 import { ROUTE_ADMIN_DASHBOARD, ROUTE_ADMIN_RACE, ROUTE_ADMIN_TYPE_RACE } from "src/utils/route";
 
-export const ADMIN_LINKS: AdminSidebarMenuLinkProps[] = [
+export const ADMIN_LINKS: SidebarMenuLinkProps[] = [
   {
     hits: "Дашборд",
     href: ROUTE_ADMIN_DASHBOARD,

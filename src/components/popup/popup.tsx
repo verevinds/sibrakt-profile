@@ -12,11 +12,17 @@ const Popup = ({
   hits,
   containerClassName,
   ...restProps
-}: PropsWithChildren<Props & Omit<PopoverProps, "isOpen" | "content">>) => {
+}: PropsWithChildren<
+  Props & Omit<PopoverProps, "isOpen" | "content">
+>): JSX.Element | null => {
   const [isShow, toggleIsShow] = useState(false);
 
   const onHide = () => toggleIsShow(false);
   const onShow = () => toggleIsShow(true);
+
+  if (!process.browser) {
+    return null;
+  }
 
   return (
     <Popover

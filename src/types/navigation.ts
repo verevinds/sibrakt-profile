@@ -10,7 +10,7 @@ export type NavLinks = {
   exec?: boolean;
 }[];
 
-export type AdminSidebarMenuLinkProps = {
+export type SidebarMenuLinkProps = {
   href: string;
   hits: string;
   icon: IconProp;

@@ -1,14 +1,8 @@
 import { NextApiRequest } from "next";
+import User from "src/mongodb/models/user";
 
-export default (req: NextApiRequest) => ({
+export default async (req: NextApiRequest) => {
   //@ts-ignore
-  id: req.user.id,
-  //@ts-ignore
-  role: req.user.role,
-  //@ts-ignore
-  phone: req.user.phone,
-  //@ts-ignore
-  email: req.user.email,
-  //@ts-ignore
-  score: req.user.score,
-});
+  const user = await User.findOne({ _id: req.user.id });
+  return user
+}  ;

@@ -1,8 +1,12 @@
-import AppLayout from "src/components/app-layout/app-layout";
+import { GetServerSideProps } from "next";
+import { ROUTE_PROFILE_DEFAULT } from "src/utils/route";
 
-export default function ProfilePage() {
-  return (
-    <AppLayout>
-    </AppLayout>
-  );
-}
+const ProfilePage = () => null;
+
+export const getServerSideProps: GetServerSideProps = async () => ({
+  redirect: {
+    destination: ROUTE_PROFILE_DEFAULT,
+    permanent: false,
+  },
+});
+export default ProfilePage;
