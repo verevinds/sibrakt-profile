@@ -1,9 +1,10 @@
-import { useEffect, useMemo } from "react";
+import { SyntheticEvent, useMemo } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBox } from "@fortawesome/free-solid-svg-icons";
 import { DateTime } from "luxon";
 import cn from "classnames";
+import debounce from "lodash.debounce";
 
 import MESSAGES from "./race.messages";
 
@@ -43,7 +44,6 @@ const Race = (): JSX.Element => {
     reset,
     setValue,
     control,
-    watch,
   } = useForm<RaceRequest>();
   const { data, mutate: getNameByPhone } = useNameByPhone();
   const phone = register("phone", {
@@ -80,14 +80,14 @@ const Race = (): JSX.Element => {
       })),
     [raceTypesData]
   );
+
   const handleRaceType = (id: string) => () => {
     changeQueryParameter({ raceType: id });
   };
-  const phoneWatches = watch().phone;
 
-  useEffect(() => {
-    getNameByPhone(phoneWatches, {
-      onSuccess: (value) => {
+  const debounceGetNameByPhone = debounce(async (phone: string) => {
+    await getNameByPhone(phone, {
+      onSuccess: (value: any) => {
         Object.keys(value).forEach((key) => {
           setValue(
             key as keyof Pick<RaceRequest, "firstName" | "lastName">,
@@ -96,7 +96,16 @@ const Race = (): JSX.Element => {
         });
       },
     });
-  }, [phoneWatches]);
+    return;
+  }, 1000);
+
+  const handlePhoneChange = async (even: SyntheticEvent<HTMLInputElement>) => {
+    if (even.currentTarget.value) {
+      debounceGetNameByPhone(even.currentTarget.value);
+    }
+
+    phone.onChange(even);
+  };
 
   return (
     <>
@@ -134,6 +143,7 @@ const Race = (): JSX.Element => {
               <TextInputPhone
                 {...phone}
                 placeholder={MESSAGES.phonePlaceholder}
+                onChange={handlePhoneChange}
                 maxLength={10}
                 error={Boolean(errors.phone)}
               />
