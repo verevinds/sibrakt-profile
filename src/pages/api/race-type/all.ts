@@ -10,7 +10,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     switch (req.method) {
       case "GET":
-        const result = await showAll();
+        const result = await showAll(req);
         return res.status(200).send(result);
       default:
         return res.status(422).send({ message: MESSAGE["methodNoSupported"] });

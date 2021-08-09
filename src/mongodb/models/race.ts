@@ -1,7 +1,5 @@
 import mongoose from "mongoose";
 import validator from "validator";
-import { DateTime } from "luxon";
-
 var Schema = mongoose.Schema;
 
 var userSchema = new Schema({

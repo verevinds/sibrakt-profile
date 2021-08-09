@@ -1,0 +1,15 @@
+.Tabs {
+  border-top: 2px solid var(--border-color-default);
+  border-bottom: 2px solid var(--border-color-default);
+  background-color: var(--background-default);
+}
+.Tab {
+  margin-right: 10px;
+}
+
+@media (--mobile) {
+  .Tab {
+    width: 100%;
+    margin-right: 0;
+  }
+}

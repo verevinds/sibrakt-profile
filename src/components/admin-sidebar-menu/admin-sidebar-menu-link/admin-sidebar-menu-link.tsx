@@ -8,6 +8,7 @@ import ActiveLink from "src/components/active-link";
 import type { AdminSidebarMenuLinkProps } from "src/types/navigation";
 
 import styles from "./admin-sidebar-menu-link.module.css";
+import Popup from "src/components/popup";
 
 const AdminSidebarMenuLink = (props: AdminSidebarMenuLinkProps): JSX.Element | null => {
   const [isShow, toggleIsShow] = useState(false);
@@ -26,28 +27,9 @@ const AdminSidebarMenuLink = (props: AdminSidebarMenuLinkProps): JSX.Element | n
       activeClassName={styles["AdminSideMenuLink_active"]}
     >
       <a className={styles["AdminSideMenuLink"]} onClick={onHide}>
-        <Popover
-          content={
-            <span
-              className={cn(
-                styles["AdminSideMenuLink__text"],
-                styles["effect7"]
-              )}
-            >
-              {props.hits}
-            </span>
-          }
-          isOpen={isShow}
-          positions={["right"]}
-        >
-          <span
-            className={styles["AdminSideMenu__icon"]}
-            onMouseEnter={onShow}
-            onMouseLeave={onHide}
-          >
+        <Popup hits={props.hits}>
             <FontAwesomeIcon icon={props.icon} />
-          </span>
-        </Popover>
+        </Popup>
       </a>
     </ActiveLink>
   );

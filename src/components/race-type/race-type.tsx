@@ -1,22 +1,32 @@
 import { useForm } from "react-hook-form";
+import { ListGroup, ListGroupItem, Tab } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faBox,
+  faBoxOpen,
+  faTrash,
+  faUpload,
+} from "@fortawesome/free-solid-svg-icons";
 
 import MESSAGES from "./race-type.messages";
 
 import Button from "src/components/button";
 import FormControl from "src/components/form-control";
 import TextInput from "src/components/text-input";
+import Section from "src/components/section";
+import Title from "src/components/title";
+
+import { useRaceTypeView } from "src/hooks/api/useRaceTypeView";
+import { useQueryParamenter } from "src/hooks/useQueryParamenter";
+import { useRaceType } from "src/hooks/api/useRaceType";
+
+import type { RaceTypeData } from "src/types/race";
 
 import styles from "./race-type.module.css";
-import { useRaceTypeView } from "src/hooks/api/useRaceTypeView";
-import { ListGroup, ListGroupItem } from "react-bootstrap";
-import { useRaceType } from "src/hooks/api/useRaceType";
-import type { RaceTypeData } from "src/types/race";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faUpload } from "@fortawesome/free-solid-svg-icons";
-import Section from "../section/section";
-import Title from "../title";
+import Tabs from "../tabs";
 
 const RaceType = (): JSX.Element => {
+  const { query, changeQueryParameter } = useQueryParamenter();
   const { mutate } = useRaceType();
   const { data, refetch } = useRaceTypeView();
   const {
@@ -53,6 +63,17 @@ const RaceType = (): JSX.Element => {
       }
     );
   };
+  const handleArchiveView = () => {
+    const isArchive = query.archive;
+    if (query.archive === "false" || !query.archive) {
+      changeQueryParameter({
+        archive: "true",
+      });
+
+      return;
+    }
+    changeQueryParameter({}, "archive");
+  };
 
   return (
     <>
@@ -73,7 +94,15 @@ const RaceType = (): JSX.Element => {
       </Section>
 
       <section className={styles["RaceType__raceTypeList"]}>
-        <h4>{MESSAGES.raceTypeSubTitle}</h4>
+        <Tabs>
+          <Tabs.Tab
+            onClick={handleArchiveView}
+            isActive={query.archive === "true"}
+          >
+            Показать архив
+          </Tabs.Tab>
+        </Tabs>
+        <h4 className={styles["RaceType__raceTypeListTitle"]}>{MESSAGES.raceTypeSubTitle}</h4>
         <ListGroup variant="flush">
           {data?.map((raceType) => (
             <ListGroupItem
@@ -90,7 +119,7 @@ const RaceType = (): JSX.Element => {
                 })}
               >
                 <FontAwesomeIcon
-                  icon={raceType.archive ? faUpload : faTrash}
+                  icon={raceType.archive ? faBoxOpen : faBox}
                   color={raceType.archive ? "green" : "red"}
                 />
               </Button>

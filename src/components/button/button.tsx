@@ -1,10 +1,10 @@
-import React from "react";
+import React, { HTMLAttributes } from "react";
 import cn from "classnames";
 import LoadingIcon from "src/icons/loading-icon";
 
 import styles from "./button.module.css";
 
-export interface ButtonProps {
+export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   loading?: boolean;
   variant?: "default" | "primary" | "outline" | "link";
   size?: "large" | "small" | "full-width";
@@ -13,7 +13,7 @@ export interface ButtonProps {
 
 const Button = React.forwardRef<
   HTMLButtonElement,
-  ButtonProps & JSX.IntrinsicElements["button"]
+  ButtonProps
 >((props, ref) => {
   const {
     loading,

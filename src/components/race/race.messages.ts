@@ -20,4 +20,6 @@ export default {
   raceTypeLabel: "Вид зачёта",
   raceTypePlaceholder: "Выберите вид зачёта",
   raceTypeRequired: "Вид зачёта обязателен",
+
+  archiveHits: 'В архиве',
 };

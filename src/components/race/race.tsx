@@ -8,11 +8,10 @@ import TextInput from "src/components/text-input";
 
 import styles from "./race.module.css";
 import { useRaceTypeView } from "src/hooks/api/useRaceTypeView";
-import { Card, ListGroup, Nav } from "react-bootstrap";
 import { useRaceType } from "src/hooks/api/useRaceType";
 import type { RaceRequest, RaceTypeData } from "src/types/race";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faBox, faTrash } from "@fortawesome/free-solid-svg-icons";
 import Section from "../section/section";
 import Title from "../title";
 import { Select } from "../select";
@@ -21,16 +20,18 @@ import TextInputPhone from "../text-input-phone";
 import { useRace } from "src/hooks/api/useRace";
 import { useRaceView } from "src/hooks/api/useRaceView";
 import raceType from "src/pages/api/race-type";
-import {DateTime} from 'luxon'
-import cn from 'classnames'
+import { DateTime } from "luxon";
+import cn from "classnames";
 import { useRouter } from "next/router";
 import { useQueryParamenter } from "src/hooks/useQueryParamenter";
+import Tabs from "src/components/tabs";
+import Popup from "../popup";
 
 type WithSelectValue = Omit<RaceRequest, "raceTypeId"> & {
   raceTypeId: { value: string; label: string };
 };
 const Race = (): JSX.Element => {
-  const {changeQueryParameter, query} = useQueryParamenter();
+  const { changeQueryParameter, query } = useQueryParamenter();
   const { mutate, isLoading } = useRace();
   const { data: races, refetch } = useRaceView();
   const { data: raceTypesData } = useRaceTypeView();
@@ -76,9 +77,9 @@ const Race = (): JSX.Element => {
       })),
     [raceTypesData]
   );
-  const handleRaceType= (id:string)=>()=>{
-    changeQueryParameter({raceType: id})
-  }
+  const handleRaceType = (id: string) => () => {
+    changeQueryParameter({ raceType: id });
+  };
 
   return (
     <>
@@ -161,25 +162,23 @@ const Race = (): JSX.Element => {
       </Section>
 
       <section>
-        <div className={styles["Race__tabs"]}>
+        <Tabs>
           {raceTypesData?.map((raceType) => (
-            <Button
-              className={styles["Race__tab"]}
+            <Tabs.Tab
               isActive={query.raceType === raceType._id}
-              variant="link"
               onClick={handleRaceType(raceType._id)}
-              size='small'
             >
               {raceType.name}
-            </Button>
+            </Tabs.Tab>
           ))}
-        </div>
+        </Tabs>
         <div
           className={cn(
             styles["Race__listGroup"],
             styles["Race__listGroup_header"]
           )}
         >
+          <span></span>
           <span className={styles["Race__listItem"]}>Имя</span>
           <span className={styles["Race__listItem"]}>Фамилия</span>
           <span className={styles["Race__listItem"]}>Номер телефона</span>
@@ -188,7 +187,19 @@ const Race = (): JSX.Element => {
           <span className={styles["Race__listItem"]}>Дата создания</span>
         </div>
         {races?.map((race) => (
-          <div className={styles["Race__listGroup"]}>
+          <div className={cn(styles["Race__listGroup"])}>
+            <span
+              className={cn(
+                styles["Race__listItem"],
+                styles["Race__listItem_withTag"]
+              )}
+            >
+              {race.raceTypeId.archive && (
+                <Popup hits={MESSAGES.archiveHits}>
+                  <FontAwesomeIcon icon={faBox} color={"red"} />
+                </Popup>
+              )}
+            </span>
             <span className={styles["Race__listItem"]} aria-label="Имя: ">
               {race.firstName ?? "-"}
             </span>
@@ -208,7 +219,7 @@ const Race = (): JSX.Element => {
               className={styles["Race__listItem"]}
               aria-label="Вид заезда: "
             >
-              {race?.raceTypeId?.name??'-'}
+              {race?.raceTypeId?.name ?? "-"}
             </span>
             <span className={styles["Race__listItem"]} aria-label="Дата: ">
               {DateTime.fromISO(race.createdAt).toFormat("dd.MM.yy hh:mm")}

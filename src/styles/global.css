@@ -17,6 +17,9 @@
   --color-invalid: #07022d;
   --correct: hsl(149, 66%, 59%);
   --error: hsl(0, 100%, 50%);
+  --indent-left-10: 10px;
+  --indent-left-15: 15px;
+  --indent-left-20: 20px;
   --placeholder-color: rgba(7, 2, 45, .5);
   --placeholder-color-invalid: rgba(7, 2, 45, .5);
   --primary-100: hsl(193, 100%, 44%);

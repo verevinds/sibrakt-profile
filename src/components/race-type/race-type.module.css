@@ -1,9 +1,11 @@
 .RaceType__form {
   width: 500px;
 }
-.RaceType__raceTypeList {
-  padding: 20px;
+.RaceType__raceTypeListTitle {
+  margin-top: var(--indent-left-15);
+  margin-left: var(--indent-left-10);
 }
+
 .RaceType__raceTypeListItem {
   display: flex;
   align-items: center;
