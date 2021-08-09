@@ -5,12 +5,17 @@ export type ProfileShort = {
   score: number;
 };
 
-export type Profile = {
+export type ProfileData = {
+  lastName?: string;
+  firstName?: string;
+  email?: string;
+  bornAt?: string;
   role: UserRole;
   score: number;
   _id: string;
   phone: string;
   createdAt: string;
+  userPic?: string;
 };
 export enum UserRole {
   Admin = 'admin',

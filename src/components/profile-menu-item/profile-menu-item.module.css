@@ -1,0 +1,37 @@
+.ProfileMenuItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 50px;
+
+  cursor: pointer;
+}
+
+.ProfileMenuItem:active {
+  transform: translateY(2px);
+}
+
+.ProfileMenuItem__column {
+  display: flex;
+  align-items: center;
+}
+
+.ProfileMenuItem__label {
+  font-size: 17px;
+  font-weight: 600;
+
+  margin-left: 12px;
+
+  color: #07022d;
+}
+
+.ProfileMenuItem__value {
+  font-size: 15px;
+
+  margin-right: 6px;
+
+  text-align: right;
+
+  color: #99a3ad;
+}
