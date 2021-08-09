@@ -12,13 +12,13 @@ type ValueRequest = {
   payload: Pick<RaceTypeData, "name"> | Pick<RaceTypeData, "_id">;
   method?: Method;
 };
-type Method = "post" | "delete";
+type Method = "post" | "put";
 export const useRaceType = () => {
   const request = useRequest();
 
   async function mutationFn({ payload, method = "post" }: ValueRequest) {
     const config = {
-      delete: { data: payload },
+      put: payload,
       post: payload,
     };
     const { data } = await request[method]("/api/race-type", config[method]);

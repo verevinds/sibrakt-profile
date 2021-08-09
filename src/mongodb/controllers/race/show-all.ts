@@ -12,7 +12,7 @@ export default async (req: NextApiRequest) => {
   const race = await Race.find(findParams)
     .populate({ path: "raceTypeId", select: "-__v -createdAt" })
     .select("-__v")
-    .sort("time");
+    .sort({"createdAt": -1});
 
   return race;
 };

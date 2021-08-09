@@ -12,7 +12,7 @@ import { ListGroup, ListGroupItem } from "react-bootstrap";
 import { useRaceType } from "src/hooks/api/useRaceType";
 import type { RaceTypeData } from "src/types/race";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faTrash, faUpload } from "@fortawesome/free-solid-svg-icons";
 import Section from "../section/section";
 import Title from "../title";
 
@@ -40,11 +40,11 @@ const RaceType = (): JSX.Element => {
     );
   });
 
-  const onDelete = (value: Pick<RaceTypeData, "_id">) => () => {
+  const onDelete = (value: Pick<RaceTypeData, "_id" | "archive">) => () => {
     mutate(
       {
         payload: value,
-        method: "delete",
+        method: "put",
       },
       {
         onSuccess: () => {
@@ -77,12 +77,22 @@ const RaceType = (): JSX.Element => {
         <ListGroup variant="flush">
           {data?.map((raceType) => (
             <ListGroupItem
-              key={raceType.id}
+              key={raceType._id}
               className={styles["RaceType__raceTypeListItem"]}
+              variant={raceType.archive ? "danger" : "light"}
             >
               <span>{raceType.name}</span>
-              <Button variant="link" onClick={onDelete({ _id: raceType._id })}>
-                <FontAwesomeIcon icon={faTrash} color={"red"} />
+              <Button
+                variant="link"
+                onClick={onDelete({
+                  _id: raceType._id,
+                  archive: !raceType.archive,
+                })}
+              >
+                <FontAwesomeIcon
+                  icon={raceType.archive ? faUpload : faTrash}
+                  color={raceType.archive ? "green" : "red"}
+                />
               </Button>
             </ListGroupItem>
           ))}

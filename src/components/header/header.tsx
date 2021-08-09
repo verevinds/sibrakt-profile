@@ -15,7 +15,7 @@ import styles from "./header.module.css";
 const Header = (): JSX.Element => {
   const { events } = useRouter();
   const { removeAccessToken, isAccessToken } = useAccessToken();
-  const [isOpen, toggleIsOpen] = useState(true);
+  const [isOpen, toggleIsOpen] = useState(false);
   const handleShow = () => toggleIsOpen((value) => !value);
 
   if (process.browser) {

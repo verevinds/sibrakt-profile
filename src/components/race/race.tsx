@@ -208,7 +208,7 @@ const Race = (): JSX.Element => {
               className={styles["Race__listItem"]}
               aria-label="Вид заезда: "
             >
-              {race.raceTypeId.name}
+              {race?.raceTypeId?.name??'-'}
             </span>
             <span className={styles["Race__listItem"]} aria-label="Дата: ">
               {DateTime.fromISO(race.createdAt).toFormat("dd.MM.yy hh:mm")}

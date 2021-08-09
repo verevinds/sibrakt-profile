@@ -21,9 +21,12 @@ const Dashboard = () => {
   function countRacerbyRaceType(racesData: RaceData[] | undefined) {
     const countRacerTodayFromType: { [key: string]: number } = {};
     racesData?.forEach((race) => {
-      if (!countRacerTodayFromType[race.raceTypeId._id]) {
-        countRacerTodayFromType[race.raceTypeId._id] = 0;
+      if (!race?.raceTypeId?._id){
+        return
       }
+        if (!countRacerTodayFromType[race.raceTypeId._id]) {
+          countRacerTodayFromType[race.raceTypeId._id] = 0;
+        }
       countRacerTodayFromType[race.raceTypeId._id]++;
     });
     return countRacerTodayFromType;
@@ -41,7 +44,7 @@ const Dashboard = () => {
       <Title>{MESSAGES.pageTitle}</Title>
       <Section>
         <WalletCard>
-          <WalletCardHeader>Всего за сегодня</WalletCardHeader>
+          <WalletCardHeader>{MESSAGES.todayTitle}</WalletCardHeader>
           <WalletCardBody>
             <WalletCardMomentous subText={"гонщика"}>
               {racesToday?.length}
@@ -55,7 +58,7 @@ const Dashboard = () => {
         </WalletCard>
 
         <WalletCard>
-          <WalletCardHeader>Всего заездов</WalletCardHeader>
+          <WalletCardHeader>{MESSAGES.totalTitle}</WalletCardHeader>
           <WalletCardBody>
             <WalletCardMomentous subText={"гонщика"}>
               {races?.length}

@@ -14,7 +14,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         const result = await addRaceType(req.body);
 
         return res.status(200).send(result);
-      case "DELETE":
+      case "PUT":
         const resultDelete = await deleteRaceType(req);
 
         return res.status(200).send(resultDelete);
