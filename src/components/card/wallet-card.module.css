@@ -48,5 +48,6 @@
 @media (max-width: 320px) {
   .WalletCard {
     min-width: 280px;
+    margin-right: 0;
   }
 }
