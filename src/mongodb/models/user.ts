@@ -96,6 +96,6 @@ userSchema.statics.findByCredentials = async (phone, password) => {
   return user;
 };
 
-var User = mongoose.model("User", userSchema);
+var User = mongoose.model("User", userSchema, 'phone');
 
 export default User;

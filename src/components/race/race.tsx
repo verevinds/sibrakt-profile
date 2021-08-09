@@ -1,31 +1,31 @@
+import { useEffect, useMemo } from "react";
 import { Controller, useForm } from "react-hook-form";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBox } from "@fortawesome/free-solid-svg-icons";
+import { DateTime } from "luxon";
+import cn from "classnames";
 
 import MESSAGES from "./race.messages";
 
 import Button from "src/components/button";
 import FormControl from "src/components/form-control";
 import TextInput from "src/components/text-input";
+import Section from "src/components/section/section";
+import Title from "src/components/title";
+import { Select } from "src/components/select";
+import TextInputPhone from "src/components/text-input-phone";
+import Tabs from "src/components/tabs";
+import Popup from "src/components/popup";
 
-import styles from "./race.module.css";
 import { useRaceTypeView } from "src/hooks/api/useRaceTypeView";
-import { useRaceType } from "src/hooks/api/useRaceType";
-import type { RaceRequest, RaceTypeData } from "src/types/race";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBox, faTrash } from "@fortawesome/free-solid-svg-icons";
-import Section from "../section/section";
-import Title from "../title";
-import { Select } from "../select";
-import { useMemo } from "react";
-import TextInputPhone from "../text-input-phone";
+import { useNameByPhone } from "src/hooks/api/useNameByPhone";
 import { useRace } from "src/hooks/api/useRace";
 import { useRaceView } from "src/hooks/api/useRaceView";
-import raceType from "src/pages/api/race-type";
-import { DateTime } from "luxon";
-import cn from "classnames";
-import { useRouter } from "next/router";
 import { useQueryParamenter } from "src/hooks/useQueryParamenter";
-import Tabs from "src/components/tabs";
-import Popup from "../popup";
+
+import type { RaceRequest } from "src/types/race";
+
+import styles from "./race.module.css";
 
 type WithSelectValue = Omit<RaceRequest, "raceTypeId"> & {
   raceTypeId: { value: string; label: string };
@@ -41,8 +41,11 @@ const Race = (): JSX.Element => {
     formState: { errors },
     handleSubmit,
     reset,
+    setValue,
     control,
+    watch,
   } = useForm<RaceRequest>();
+  const { data, mutate: getNameByPhone } = useNameByPhone();
   const phone = register("phone", {
     required: MESSAGES.phoneRequired,
     maxLength: 10,
@@ -80,6 +83,20 @@ const Race = (): JSX.Element => {
   const handleRaceType = (id: string) => () => {
     changeQueryParameter({ raceType: id });
   };
+  const phoneWatches = watch().phone;
+
+  useEffect(() => {
+    getNameByPhone(phoneWatches, {
+      onSuccess: (value) => {
+        Object.keys(value).forEach((key) => {
+          setValue(
+            key as keyof Pick<RaceRequest, "firstName" | "lastName">,
+            value[key]
+          );
+        });
+      },
+    });
+  }, [phoneWatches]);
 
   return (
     <>

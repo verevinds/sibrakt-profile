@@ -17,6 +17,11 @@ export type ProfileData = {
   createdAt: string;
   userPic?: string;
 };
+
+export type ProfileOnlyName = {
+  lastName?: string;
+  firstName?: string;
+}
 export enum UserRole {
   Admin = 'admin',
   User = 'user'

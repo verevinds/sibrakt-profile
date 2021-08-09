@@ -12,6 +12,7 @@ var userSchema = new Schema({
   phone: {
     type: String,
     required: true,
+    unique: true,
     validate: (value: string) => {
       if (!validator.isMobilePhone(value)) {
         throw { message: "Неверный формат номера телефона" };
