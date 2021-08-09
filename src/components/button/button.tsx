@@ -1,10 +1,10 @@
-import React, { HTMLAttributes } from "react";
+import React, { ButtonHTMLAttributes, HTMLAttributes } from "react";
 import cn from "classnames";
 import LoadingIcon from "src/icons/loading-icon";
 
 import styles from "./button.module.css";
 
-export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   loading?: boolean;
   variant?: "default" | "primary" | "outline" | "link";
   size?: "large" | "small" | "full-width";

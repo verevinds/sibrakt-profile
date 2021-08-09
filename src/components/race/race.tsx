@@ -51,7 +51,7 @@ const Race = (): JSX.Element => {
   const firstName = register("firstName");
   const lastName = register("lastName");
 
-  const onSumbit = handleSubmit(async (value) => {
+  const onSubmit = handleSubmit(async (value) => {
     const valueWithSelectValue = value as unknown as WithSelectValue;
 
     const payload = {
@@ -87,7 +87,7 @@ const Race = (): JSX.Element => {
 
       <Section>
         <h2>{MESSAGES.raceTitle}</h2>
-        <form onSubmit={onSumbit}>
+        <form onSubmit={onSubmit}>
           <div className={styles["Race__form"]}>
             <FormControl
               label={MESSAGES.firstNameLabel}
