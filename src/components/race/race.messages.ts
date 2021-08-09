@@ -22,4 +22,6 @@ export default {
   raceTypeRequired: "Вид зачёта обязателен",
 
   archiveHits: 'В архиве',
+
+  submit: 'Добавить'
 };

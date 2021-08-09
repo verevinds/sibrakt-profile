@@ -156,7 +156,7 @@ const Race = (): JSX.Element => {
             </FormControl>
           </div>
           <Button loading={isLoading} className={styles["Race__submit"]}>
-            Добавить
+            {MESSAGES.submit}
           </Button>
         </form>
       </Section>
