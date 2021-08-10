@@ -1,5 +1,5 @@
 
-.WalletCardHeader {
+.CardHeader {
   font-size: 20px;
   font-weight: 700;
   line-height: 1.2;
@@ -11,11 +11,11 @@
   border-bottom: 1px solid rgba(22, 27, 35, .08);
 }
 
-.WalletCardHeader_grayBorder {
+.CardHeader_grayBorder {
   border-color: rgba(255, 255, 255, .1);
 }
 
-.WalletCardHeader_indented {
+.CardHeader_indented {
   margin: 0 16px;
   padding: 20px 0;
 }

@@ -3,9 +3,9 @@ import MESSAGES from "./dashboard.messages";
 import Title from "src/components/title";
 import Section from "src/components/section";
 import { useRaceTodayView } from "src/hooks/api/useRaceTodayView";
-import WalletCard, { WalletCardMarkText, WalletCardMomentous } from "../card";
-import WalletCardHeader from "../card/wallet-card-header";
-import WalletCardBody from "../card/wallet-card-body";
+import Card, { CardMarkText, CardMomentous } from "../card";
+import CardHeader from "../card/card-header";
+import CardBody from "../card/card-body";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { useRaceTypeView } from "src/hooks/api/useRaceTypeView";
@@ -50,33 +50,33 @@ const Dashboard = () => {
     <>
       <Title>{MESSAGES.pageTitle}</Title>
       <Section>
-        <WalletCard>
-          <WalletCardHeader>{MESSAGES.todayTitle}</WalletCardHeader>
-          <WalletCardBody>
-            <WalletCardMomentous subText={"гонщика"}>
+        <Card>
+          <CardHeader>{MESSAGES.todayTitle}</CardHeader>
+          <CardBody>
+            <CardMomentous subText={"гонщика"}>
               {racesTodayDashboard?.length}
-            </WalletCardMomentous>
+            </CardMomentous>
             {raceTypes?.map((raceType) => (
-              <WalletCardMarkText icon={<FontAwesomeIcon icon={faCheck} />}>
+              <CardMarkText icon={<FontAwesomeIcon icon={faCheck} />}>
                 {`${racersTodayByRaceType[raceType._id] ?? 0} ${raceType.name}`}
-              </WalletCardMarkText>
+              </CardMarkText>
             ))}
-          </WalletCardBody>
-        </WalletCard>
+          </CardBody>
+        </Card>
 
-        <WalletCard>
-          <WalletCardHeader>{MESSAGES.totalTitle}</WalletCardHeader>
-          <WalletCardBody>
-            <WalletCardMomentous subText={"гонщика"}>
+        <Card>
+          <CardHeader>{MESSAGES.totalTitle}</CardHeader>
+          <CardBody>
+            <CardMomentous subText={"гонщика"}>
               {racesDashboard?.length}
-            </WalletCardMomentous>
+            </CardMomentous>
             {raceTypes?.map((raceType) => (
-              <WalletCardMarkText icon={<FontAwesomeIcon icon={faCheck} />}>
+              <CardMarkText icon={<FontAwesomeIcon icon={faCheck} />}>
                 {`${racersByRaceType[raceType._id] ?? 0} ${raceType.name}`}
-              </WalletCardMarkText>
+              </CardMarkText>
             ))}
-          </WalletCardBody>
-        </WalletCard>
+          </CardBody>
+        </Card>
       </Section>
 
       <Section fullSize>

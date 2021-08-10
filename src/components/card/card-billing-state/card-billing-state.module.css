@@ -1,4 +1,4 @@
-.WalletCardBillingState {
+.CardBillingState {
   display: inline-flex;
   align-items: flex-end;
   justify-content: center;
@@ -6,10 +6,10 @@
   height: 100%;
   margin-top: 32px;
 }
-.WalletCardBillingState__text {
+.CardBillingState__text {
   opacity: .7;
 }
-.WalletCardBillingState__text_highlight {
+.CardBillingState__text_highlight {
   font-weight: 600;
 
   margin-left: 3px;

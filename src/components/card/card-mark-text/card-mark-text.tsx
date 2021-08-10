@@ -1,22 +1,22 @@
 import type { HTMLAttributes, PropsWithChildren } from "react";
 import cn from "classnames";
 
-import styles from "./wallet-card-mark-text.module.css";
+import styles from "./card-mark-text.module.css";
 
 export type Props = {
   icon: JSX.Element;
 } & HTMLAttributes<HTMLDivElement>;
 
-export const WalletCardMarkText = ({
+export const CardMarkText = ({
   icon,
   children,
   className,
   ...restProps
 }: PropsWithChildren<Props>): JSX.Element => (
-  <div {...restProps} className={cn(styles["WalletCardMarkText"], className)}>
-    <span className={styles["WalletCardMarkText__icon"]}>{icon}</span>
+  <div {...restProps} className={cn(styles["CardMarkText"], className)}>
+    <span className={styles["CardMarkText__icon"]}>{icon}</span>
     <span>{children}</span>
   </div>
 );
 
-export default WalletCardMarkText;
+export default CardMarkText;

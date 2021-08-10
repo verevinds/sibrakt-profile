@@ -1,10 +1,10 @@
 import type { HTMLAttributes, PropsWithChildren } from "react";
 import cn from "classnames";
 
-import styles from "./wallet-card-billing-state.module.css";
+import styles from "./card-billing-state.module.css";
 
 export type Props = { subText?: string } & HTMLAttributes<HTMLDivElement>;
-export const WalletCardBillingState = ({
+export const CardBillingState = ({
   subText,
   children,
   className,
@@ -12,15 +12,15 @@ export const WalletCardBillingState = ({
 }: PropsWithChildren<Props>): JSX.Element => (
   <div
     {...restProps}
-    className={cn(styles["WalletCardBillingState"], className)}
+    className={cn(styles["CardBillingState"], className)}
   >
-    <span className={styles["WalletCardBillingState__text"]}>{children}</span>
+    <span className={styles["CardBillingState__text"]}>{children}</span>
     {subText && (
-      <span className={styles["WalletCardBillingState__text_highlight"]}>
+      <span className={styles["CardBillingState__text_highlight"]}>
         {subText}
       </span>
     )}
   </div>
 );
 
-export default WalletCardBillingState;
+export default CardBillingState;

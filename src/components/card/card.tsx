@@ -1,7 +1,7 @@
 import type { PropsWithChildren, HTMLAttributes } from "react";
 import cn from "classnames";
 
-import styles from "./wallet-card.module.css";
+import styles from "./card.module.css";
 
 type Variants = "red" | "dark" | "default";
 type Props = {
@@ -9,7 +9,7 @@ type Props = {
   isActive?: boolean;
 } & HTMLAttributes<HTMLDivElement>;
 
-export const WalletCard = ({
+export const Card = ({
   children,
   variant = "default",
   isActive,
@@ -19,12 +19,12 @@ export const WalletCard = ({
   <div
     {...restProps}
     className={cn(
-      styles["WalletCard"],
+      styles["Card"],
       {
-        [styles["WalletCard_default"]]: variant === "default",
-        [styles["WalletCard_red"]]: variant === "red",
-        [styles["WalletCard_dark"]]: variant === "dark",
-        [styles["WalletCard_active"]]: isActive,
+        [styles["Card_default"]]: variant === "default",
+        [styles["Card_red"]]: variant === "red",
+        [styles["Card_dark"]]: variant === "dark",
+        [styles["Card_active"]]: isActive,
       },
       className
     )}
@@ -33,4 +33,4 @@ export const WalletCard = ({
   </div>
 );
 
-export default WalletCard;
+export default Card;

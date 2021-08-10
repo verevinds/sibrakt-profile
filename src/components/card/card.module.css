@@ -1,4 +1,4 @@
-.WalletCard {
+.Card {
   display: inline-grid;
 
   box-sizing: content-box;
@@ -15,38 +15,38 @@
   grid-template-rows: minmax(64px, auto) auto min-content;
 }
 
-.WalletCard:last-child {
+.Card:last-child {
   margin-right: 0;
 }
 
-.WalletCard_red {
+.Card_red {
   color: white;
   background: var(--primary-100);
 
-  --color-WalletCard: var(--primary-100);
+  --color-Card: var(--primary-100);
 }
 
-.WalletCard_dark {
+.Card_dark {
   color: white;
   background-color: #161b23;
 
-  --color-WalletCard: #161b23;
+  --color-Card: #161b23;
 }
 
-.WalletCard_default {
+.Card_default {
   border: solid 1px hsl(207, 24%, 93%);
   background-color: hsl(204, 33%, 97%);
 
-  --color-WalletCard: #f5f8fa;
+  --color-Card: #f5f8fa;
 }
 
-.WalletCard_active {
+.Card_active {
   border: 4px solid white;
-  box-shadow: 0 0 0 4px var(--color-WalletCard);
+  box-shadow: 0 0 0 4px var(--color-Card);
 }
 
 @media (max-width: 320px) {
-  .WalletCard {
+  .Card {
     min-width: 280px;
     margin-right: 0;
   }

@@ -1,4 +1,4 @@
-.WalletCardBody {
+.CardBody {
   display: flex;
   flex-direction: column;
 
@@ -7,6 +7,6 @@
 
 
 @media (max-width: 320px) {
-  .WalletCardBody {
+  .CardBody {
   }
 }
