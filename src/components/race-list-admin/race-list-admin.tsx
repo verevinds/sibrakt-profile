@@ -79,7 +79,7 @@ const RaceListAdmin = ({ races }: Props) => {
               {race.phone}
             </span>
             <span className={styles["Race__listItem"]} aria-label="Время: ">
-              {race.time}
+              {race.time.toFixed(2)}
             </span>
             <span
               className={styles["Race__listItem"]}
