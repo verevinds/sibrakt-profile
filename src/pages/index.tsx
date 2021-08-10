@@ -1,11 +1,12 @@
-import AppLayout from "src/components/app-layout/app-layout";
-import Title from "src/components/title/title";
+import { GetServerSideProps } from "next";
+import { ROUTE_DEFAULT } from "src/utils/route";
 
-export default function Home() {
-  return (
-    <AppLayout>
-      <Title />
+const Home = () => null;
 
-    </AppLayout>
-  );
-}
+export const getServerSideProps: GetServerSideProps = async () => ({
+  redirect: {
+    destination: ROUTE_DEFAULT,
+    permanent: false,
+  },
+});
+export default Home;
