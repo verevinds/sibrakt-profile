@@ -5,11 +5,19 @@
   border-top: 2px solid var(--black-5);
 }
 
+.Section_fullSize {
+  padding: 0;
+}
+
 @media (--mobile) {
   .Section {
     width: 100%;
     padding: 10px;
 
     border-top: 2px solid var(--black-5);
+  }
+
+  .Section_fullSize {
+    padding: 0;
   }
 }

@@ -26,16 +26,20 @@ const Button = React.forwardRef<
     ...otherProps
   } = props;
 
-  const btnStyle = cn(styles.Button, className, {
-    [styles["Button_active"]]: isActive,
-    [styles.Button_variant_default]: variant === "default",
-    [styles.Button_variant_primary]: variant === "primary",
-    [styles.Button_variant_outline]: variant === "outline",
-    [styles.Button_variant_link]: variant === "link",
-    [styles.Button_size_large]: size === "large",
-    [styles.Button_size_small]: size === "small",
-    [styles.Button_size_fullWidth]: size === "full-width",
-  });
+  const btnStyle = cn(
+    styles.Button,
+    {
+      [styles["Button_active"]]: isActive,
+      [styles.Button_variant_default]: variant === "default",
+      [styles.Button_variant_primary]: variant === "primary",
+      [styles.Button_variant_outline]: variant === "outline",
+      [styles.Button_variant_link]: variant === "link",
+      [styles.Button_size_large]: size === "large",
+      [styles.Button_size_small]: size === "small",
+      [styles.Button_size_fullWidth]: size === "full-width",
+    },
+    className
+  );
 
   if (loading) {
     return (

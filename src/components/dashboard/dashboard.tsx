@@ -8,36 +8,44 @@ import WalletCardHeader from "../card/wallet-card-header";
 import WalletCardBody from "../card/wallet-card-body";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
-import { useRaceView } from "src/hooks/api/useRaceView";
 import { useRaceTypeView } from "src/hooks/api/useRaceTypeView";
 import { useMemo } from "react";
 import { RaceData } from "src/types/race";
+import RaceListAdmin from "../race-list-admin";
+import { useDashdoard } from "src/hooks/api/useDashdoard";
+
+import styles from "./dashboard.module.css";
 
 const Dashboard = () => {
   const { data: racesToday } = useRaceTodayView();
-  const { data: races } = useRaceView();
+  const { races: racesDashboard, racesToday: racesTodayDashboard } =
+    useDashdoard();
   const { data: raceTypes } = useRaceTypeView();
 
   function countRacerbyRaceType(racesData: RaceData[] | undefined) {
+    console.log(racesData);
     const countRacerTodayFromType: { [key: string]: number } = {};
     racesData?.forEach((race) => {
-      if (!race?.raceTypeId?._id){
-        return
+      if (!race?.raceTypeId?._id) {
+        return;
       }
-        if (!countRacerTodayFromType[race.raceTypeId._id]) {
-          countRacerTodayFromType[race.raceTypeId._id] = 0;
-        }
+      if (!countRacerTodayFromType[race.raceTypeId._id]) {
+        countRacerTodayFromType[race.raceTypeId._id] = 0;
+      }
       countRacerTodayFromType[race.raceTypeId._id]++;
     });
     return countRacerTodayFromType;
   }
 
   const racersTodayByRaceType = useMemo(
-    () => countRacerbyRaceType(racesToday),
-    [racesToday]
+    () => countRacerbyRaceType(racesTodayDashboard),
+    [racesTodayDashboard]
   );
 
-  const racersByRaceType = useMemo(() => countRacerbyRaceType(races), [races]);
+  const racersByRaceType = useMemo(
+    () => countRacerbyRaceType(racesDashboard),
+    [racesDashboard]
+  );
 
   return (
     <>
@@ -47,7 +55,7 @@ const Dashboard = () => {
           <WalletCardHeader>{MESSAGES.todayTitle}</WalletCardHeader>
           <WalletCardBody>
             <WalletCardMomentous subText={"гонщика"}>
-              {racesToday?.length}
+              {racesTodayDashboard?.length}
             </WalletCardMomentous>
             {raceTypes?.map((raceType) => (
               <WalletCardMarkText icon={<FontAwesomeIcon icon={faCheck} />}>
@@ -61,7 +69,7 @@ const Dashboard = () => {
           <WalletCardHeader>{MESSAGES.totalTitle}</WalletCardHeader>
           <WalletCardBody>
             <WalletCardMomentous subText={"гонщика"}>
-              {races?.length}
+              {racesDashboard?.length}
             </WalletCardMomentous>
             {raceTypes?.map((raceType) => (
               <WalletCardMarkText icon={<FontAwesomeIcon icon={faCheck} />}>
@@ -70,6 +78,11 @@ const Dashboard = () => {
             ))}
           </WalletCardBody>
         </WalletCard>
+      </Section>
+
+      <Section fullSize>
+        <h4 className={styles["Dashboard__subTitle"]}>Заезды за сегодня</h4>
+        <RaceListAdmin races={racesToday} />
       </Section>
     </>
   );

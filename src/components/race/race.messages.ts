@@ -21,7 +21,5 @@ export default {
   raceTypePlaceholder: "Выберите вид зачёта",
   raceTypeRequired: "Вид зачёта обязателен",
 
-  archiveHits: 'В архиве',
-
   submit: 'Добавить'
 };

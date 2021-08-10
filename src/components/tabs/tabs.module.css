@@ -9,7 +9,7 @@
 
 @media (--mobile) {
   .Tab {
-    width: 100%;
+    width: 100% !important;
     margin-right: 0;
   }
 }

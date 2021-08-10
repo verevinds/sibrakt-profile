@@ -1,0 +1,48 @@
+.Race__listItem {
+  word-break: break-all;
+}
+.Race__listGroup {
+  display: grid;
+
+  padding: 5px 20px;
+
+  grid-template-columns: 25px repeat(6, 1fr);
+}
+
+.Race__listGroup:nth-child(2n) {
+  background-color: var(--background-default);
+}
+
+.Race__listGroup_header {
+  font-size: 1.1em;
+  font-weight: 600;
+
+  border-bottom: 2px solid var(--border-color-default);
+}
+.Race__listItem_withTag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (--mobile) {
+  .Race__listGroup_header {
+    display: none;
+  }
+  .Race__listGroup {
+    margin: 1.1em 1.75em;
+    padding: 1.25em 1.75em;
+
+    border: solid 1px hsl(207, 24%, 93%);
+    border-radius: 9px;
+    background-color: hsl(204, 33%, 97%);
+
+    grid-template-columns: initial;
+  }
+  .Race__listItem::before {
+    font-size: 1.1em;
+    font-weight: 600;
+
+    content: attr(aria-label);
+  }
+}
