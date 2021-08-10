@@ -1,6 +1,5 @@
 import { NextApiRequest } from "next";
 import Race from "src/mongodb/models/race";
-import { byNoArchive } from "src/mongodb/utils/race";
 import { RaceData } from "src/types/race";
 import { ProfileData } from "src/types/user";
 
