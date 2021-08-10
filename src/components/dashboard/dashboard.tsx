@@ -23,7 +23,6 @@ const Dashboard = () => {
   const { data: raceTypes } = useRaceTypeView();
 
   function countRacerbyRaceType(racesData: RaceData[] | undefined) {
-    console.log(racesData);
     const countRacerTodayFromType: { [key: string]: number } = {};
     racesData?.forEach((race) => {
       if (!race?.raceTypeId?._id) {
