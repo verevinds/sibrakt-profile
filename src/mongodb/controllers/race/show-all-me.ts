@@ -5,7 +5,6 @@ import { RaceData } from "src/types/race";
 import { ProfileData } from "src/types/user";
 
 export default async (req: NextApiRequest) => {
-  const params = req.query;
   //@ts-ignore
   const user = req.user as ProfileData;
   const findParams: { [key: string]: any } = {
