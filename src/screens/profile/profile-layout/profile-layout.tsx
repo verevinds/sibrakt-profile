@@ -1,6 +1,9 @@
 import { PropsWithChildren } from "react";
-import SidebarMenu from "src/components/sidebar-menu";
+
 import { PROFILE_LINKS } from "./profile-layout.links";
+
+import SidebarMenu from "src/components/sidebar-menu";
+
 import styles from "./profile-layout.module.css";
 
 const ProfileLayout = ({ children }: PropsWithChildren<unknown>) => {

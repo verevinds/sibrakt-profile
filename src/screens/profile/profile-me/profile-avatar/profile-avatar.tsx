@@ -1,6 +1,4 @@
 import styles from "./profile-avatar.module.css";
-import cn from "classnames";
-import UserIcon from "src/icons/user";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 
