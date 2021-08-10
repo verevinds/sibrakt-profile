@@ -1,20 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Alert } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import Button from "src/components/button";
 import FormControl from "src/components/form-control";
 import Modal, { ModalProps } from "src/components/modal";
 import ModalButtons from "src/components/modal-buttons";
 import TextInputPassword from "src/components/text-input-password";
+import { useChangePassword } from "src/hooks/api/useChangePassword";
+import { ChangePasswordForm } from "src/types/auth";
 
 import MESSAGES from "./profile-change-password-modal.messages";
 
 import styles from "./profile-change-password-modal.module.css";
-
-interface ChangePasswordForm {
-  oldPassword: string;
-  newPassword: string;
-  confirmPassword: string;
-}
 
 export type ChangePasswordModalProps = Omit<ModalProps, "title"> & {
   onChangeSuccess: () => void;
@@ -24,14 +21,26 @@ export const ChangePasswordModal = ({
   onChangeSuccess,
   ...props
 }: ChangePasswordModalProps): JSX.Element => {
+  const [errorCommon, setErrorCommon] = useState("");
+
+  const { mutate } = useChangePassword();
   const {
     handleSubmit,
     register,
     formState: { errors },
     setError,
+    reset
   } = useForm<ChangePasswordForm>();
 
-  const onSubmit = handleSubmit((value) => {
+  useEffect(() => {
+    return () => {
+      setErrorCommon("");
+      reset()
+    };
+  }, []);
+
+  const onSubmit = handleSubmit(async (value) => {
+    setErrorCommon("");
     if (value.newPassword !== value.confirmPassword) {
       setError("confirmPassword", {
         type: "validate",
@@ -39,10 +48,21 @@ export const ChangePasswordModal = ({
       });
       return;
     }
+
+    await mutate(value, {
+      onError: (error) => {
+        console.dir(error);
+        setErrorCommon(error.response?.data.message!);
+      },
+      onSuccess: () => {
+        onChangeSuccess();
+        reset();
+      },
+    });
   });
 
-  const oldPassword = register("oldPassword", {
-    required: MESSAGES.oldPasswordRequired,
+  const currentPassword = register("currentPassword", {
+    required: MESSAGES.currentPasswordRequired,
   });
   const newPassword = register("newPassword", {
     required: MESSAGES.newPasswordRequired,
@@ -59,15 +79,15 @@ export const ChangePasswordModal = ({
     >
       <form onSubmit={onSubmit}>
         <FormControl
-          label={MESSAGES.oldPasswordLabel}
-          name={oldPassword.name}
-          error={errors.oldPassword?.message}
+          label={MESSAGES.confirmPasswordLabel}
+          name={currentPassword.name}
+          error={errors.currentPassword?.message}
         >
           <TextInputPassword
-            {...oldPassword}
-            placeholder={MESSAGES.oldPasswordPlaceholder}
+            {...currentPassword}
+            placeholder={MESSAGES.confirmPasswordPlaceholder}
             variant="light"
-            error={Boolean(errors.oldPassword)}
+            error={Boolean(errors.currentPassword)}
           />
         </FormControl>
         <FormControl
@@ -95,7 +115,11 @@ export const ChangePasswordModal = ({
             error={Boolean(errors.confirmPassword)}
           />
         </FormControl>
-
+        <div className={styles["ProfileChangePasswordModal__error"]}>
+          <Alert variant={errorCommon ? "danger" : "light"}>
+            {errorCommon && errorCommon}
+          </Alert>
+        </div>
         <ModalButtons alignContent="center">
           <Button variant="primary" size="large">
             {MESSAGES.save}

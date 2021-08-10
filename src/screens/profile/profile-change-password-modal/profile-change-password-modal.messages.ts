@@ -1,7 +1,7 @@
 export default {
-  oldPasswordLabel: "Старый пароль",
-  oldPasswordPlaceholder: "Введите старый пароль",
-  oldPasswordRequired: "Обязательно введите старый пароль",
+  currentPasswordLabel: "Текущий пароль",
+  currentPasswordPlaceholder: "Введите текущий пароль",
+  currentPasswordRequired: "Обязательно введите текущий пароль",
 
   newPasswordLabel: "Новый пароль",
   newPasswordPlaceholder: "Введите новый пароль",
@@ -14,5 +14,5 @@ export default {
 
   save: "Сохранить новый пароль",
 
-  modalTitle: 'Изменить пароль'
+  modalTitle: "Изменить пароль",
 };

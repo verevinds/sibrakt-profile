@@ -19,7 +19,7 @@
   padding: 40px;
 
   outline: none;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, .7);
 }
 
 .ModalSheet {
@@ -87,11 +87,17 @@
   justify-content: center;
 }
 
-@media (max-width: 768px) {
+@media (--mobile) {
+  .Modal__overlay {
+    padding: 0;
+  }
   .ModalSheet__header {
     font-size: 24px;
   }
   .ModalSheet {
+    height: 100vh;
     padding: 30px;
+
+    border-radius: 0;
   }
 }
