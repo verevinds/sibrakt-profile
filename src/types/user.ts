@@ -16,6 +16,8 @@ export type ProfileData = {
   phone: string;
   createdAt: string;
   userPic?: string;
+  countRace: number;
+  countRaceToday: number;
 };
 
 export type ProfileOnlyName = {

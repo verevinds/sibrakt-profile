@@ -16,7 +16,6 @@ export default async (req: NextApiRequest) => {
       { lastName: { $ne: user.lastName } },
     ],
   });
-  console.log(races);
 
   races.forEach(async (race) => {
     await Race.findByIdAndUpdate(race._id, {
@@ -34,7 +33,9 @@ export default async (req: NextApiRequest) => {
     .select(
       "-__v -password -email -tokens -phone -score -role -firstName -lastName -name -userLink"
     )
-    .sort({ createdAt: -1 });
+    .sort({ createdAt: -1 })
+    .skip(req.query.offset ?? 0)
+    .limit(req.query.limit ?? 10);
 
   return racesMe;
 };

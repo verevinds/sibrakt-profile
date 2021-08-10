@@ -3,6 +3,8 @@
 
   display: inline-flex;
   align-items: center;
+
+  color: var(--text-color);
 }
 
 .CardMomentous__range {
@@ -15,4 +17,6 @@
   font-weight: bold;
 
   opacity: 1;
+  color: var(--black-100);
+  /* color: var(--primary-100); */
 }

@@ -10,7 +10,7 @@ import {
 
 export const PROFILE_LINKS: SidebarMenuLinkProps[] = [
   {
-    hits: "Дашборд",
+    hits: "Мои достижения",
     href: ROUTE_PROFILE_DASHBOARD,
     icon: faTachometerAlt,
     exec: true,
@@ -20,5 +20,4 @@ export const PROFILE_LINKS: SidebarMenuLinkProps[] = [
     href: ROUTE_PROFILE_ME,
     icon: faAddressCard,
   },
-
 ];
