@@ -1,0 +1,10 @@
+.ProfileDashboard__allRace {
+  overflow: hidden;
+  overflow-y: auto;
+
+  max-height: 500px;
+}
+
+.ProfileDashboard__listItem {
+  margin: 0 var(--indent-10);
+}

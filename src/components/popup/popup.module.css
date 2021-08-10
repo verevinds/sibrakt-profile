@@ -14,9 +14,12 @@
 }
 
 .Popup__icon {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
 
   margin: 0;
+}
+.Popup__icon_justifyLeft {
+  justify-content: left;
 }

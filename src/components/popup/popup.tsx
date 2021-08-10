@@ -5,11 +5,13 @@ import cn from "classnames";
 import styles from "./popup.module.css";
 
 type Props = {
-  hits: string;
+  hits: JSX.Element | string;
+  justifyLeft?: boolean;
 };
 const Popup = ({
   children,
   hits,
+  justifyLeft,
   containerClassName,
   ...restProps
 }: PropsWithChildren<
@@ -36,7 +38,9 @@ const Popup = ({
       {...restProps}
     >
       <span
-        className={styles["Popup__icon"]}
+        className={cn(styles["Popup__icon"], {
+          [styles["Popup__icon_justifyLeft"]]: justifyLeft,
+        })}
         onMouseEnter={onShow}
         onMouseLeave={onHide}
       >
