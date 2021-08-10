@@ -1,13 +1,12 @@
 import AppLayout from "src/components/app-layout/app-layout";
-import ProfileLayout from "src/components/profile-layout";
-import Profile from "src/components/profile";
-import Dashboard from "src/components/dashboard";
+import ProfileDashboard from "src/screens/profile/profile-dashboard";
+import ProfileLayout from "src/screens/profile/profile-layout";
 
 const ProfileDashboardPage = () => {
   return (
     <AppLayout>
       <ProfileLayout>
-        <Dashboard />
+        <ProfileDashboard />
       </ProfileLayout>
     </AppLayout>
   );

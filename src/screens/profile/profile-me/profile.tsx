@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 
 import MESSAGES from "./profile.messages";
+import { ProfileMenuItem } from "./profile-menu-item";
+import { ProfileAvatar } from "./profile-avatar";
 
 import { useMeProfile } from "src/hooks/api/useMeProfile";
 import { useMeProfileMutation } from "src/hooks/api/useMeProfileMutation";
@@ -13,8 +15,6 @@ import TextInput from "src/components/text-input";
 import Title from "src/components/title";
 import Section from "src/components/section";
 import Button from "src/components/button";
-import { ProfileMenuItem } from "src/components/profile-menu-item";
-import { ProfileAvatar } from "src/components/profile-avatar";
 
 import LockIcon from "src/icons/lock/lock";
 import PhoneIcon from "src/icons/phone";
