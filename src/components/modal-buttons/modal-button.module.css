@@ -1,0 +1,11 @@
+.ModalButtons {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: flex-end;
+  gap: 20px;
+  margin-top: 35px;
+  padding-bottom: 5px;
+}
+.ModalButtons_align_content_center {
+  justify-content: center;
+}

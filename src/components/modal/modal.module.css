@@ -1,0 +1,97 @@
+.Modal {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  overflow: auto;
+}
+
+.Modal__overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-height: 100%;
+  padding: 40px;
+
+  outline: none;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.ModalSheet {
+  position: relative;
+
+  width: 100%;
+  max-width: 710px;
+  padding: 50px 70px 70px;
+
+  border-radius: 12px;
+  background: white;
+}
+.ModalSheet_align_content_center {
+  text-align: center;
+}
+
+.ModalSheet__icon {
+  margin-bottom: 24px;
+}
+
+.ModalSheet__header {
+  font-size: 38px;
+  font-weight: bold;
+  line-height: 1.26;
+
+  margin: 0;
+
+  word-wrap: break-word;
+}
+
+.ModalSheet__closeButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  width: 80px;
+  height: 80px;
+  margin: 0;
+  padding: 0;
+
+  cursor: pointer;
+
+  border: 0;
+  background: none;
+}
+.ModalSheet__closeButton:not(:focus-visible) {
+  outline: none;
+}
+
+.ModalSheet__content {
+  margin-top: 30px;
+}
+
+.ModalButtons {
+  display: grid;
+  justify-content: flex-end;
+
+  margin-top: 35px;
+  padding-bottom: 5px;
+
+  gap: 20px;
+  grid-auto-flow: column;
+}
+.ModalButtons_align_content_center {
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .ModalSheet__header {
+    font-size: 24px;
+  }
+  .ModalSheet {
+    padding: 30px;
+  }
+}

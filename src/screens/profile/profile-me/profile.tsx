@@ -20,8 +20,11 @@ import LockIcon from "src/icons/lock/lock";
 import PhoneIcon from "src/icons/phone";
 
 import styles from "./profile.module.css";
+import { ChangePasswordModal } from "../profile-change-password-modal";
+import { useModalState } from "src/hooks/useModalState";
 
 const Profile = (): JSX.Element => {
+  const {isModalVisible, openModal, closeModal} = useModalState();
   const { data: meProfile, refetch, isFetching } = useMeProfile();
   const { mutate, isLoading: isLoadingUpdate } = useMeProfileMutation();
   const {
@@ -118,7 +121,7 @@ const Profile = (): JSX.Element => {
               label={MESSAGES.passwordLabel}
               Icon={LockIcon}
               value={MESSAGES.passwordPlaceholder}
-              onClick={() => {}}
+              onClick={openModal}
             />
             <ProfileMenuItem
               label={MESSAGES.phoneLabel}
@@ -129,6 +132,12 @@ const Profile = (): JSX.Element => {
           </div>
         </div>
       </Section>
+
+      <ChangePasswordModal
+        onRequestClose={closeModal}
+        isOpen={isModalVisible}
+        onChangeSuccess={closeModal}
+      />
     </>
   );
 };
