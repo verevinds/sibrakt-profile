@@ -14,8 +14,9 @@ export default async () => {
     },
   })
     .populate({
-      path: "raceTypeId",
-      select: "-__v -createdAt",
+      path: "raceTypeId userLink",
+      select:
+        "-__v -createdAt -password -email -tokens -phone -score -role -_id",
       findParams: { archive: { $ne: true } },
     })
     .select("-__v")

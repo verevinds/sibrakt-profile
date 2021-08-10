@@ -18,8 +18,8 @@ var userSchema = new Schema({
         throw { message: "Неверный формат номера телефона" };
       }
     },
-    ref: "User",
   },
+  userLink: { type: Schema.Types.ObjectId, ref: "User" },
   raceTypeId: { type: Schema.Types.ObjectId, ref: "RaceType", required: true },
   time: {
     type: Number,

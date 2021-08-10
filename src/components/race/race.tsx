@@ -45,7 +45,7 @@ const Race = (): JSX.Element => {
     setValue,
     control,
   } = useForm<RaceRequest>();
-  const { data, mutate: getNameByPhone } = useNameByPhone();
+  const { mutate: getNameByPhone } = useNameByPhone();
   const phone = register("phone", {
     required: MESSAGES.phoneRequired,
     maxLength: 10,
@@ -213,46 +213,51 @@ const Race = (): JSX.Element => {
           <span className={styles["Race__listItem"]}>Вид зачета</span>
           <span className={styles["Race__listItem"]}>Дата создания</span>
         </div>
-        {races?.map((race) => (
-          <div className={cn(styles["Race__listGroup"])}>
-            <span
-              className={cn(
-                styles["Race__listItem"],
-                styles["Race__listItem_withTag"]
-              )}
-            >
-              {race.raceTypeId.archive && (
-                <Popup hits={MESSAGES.archiveHits}>
-                  <FontAwesomeIcon icon={faBox} color={"red"} />
-                </Popup>
-              )}
-            </span>
-            <span className={styles["Race__listItem"]} aria-label="Имя: ">
-              {race.firstName ?? "-"}
-            </span>
-            <span className={styles["Race__listItem"]} aria-label="Фамилия: ">
-              {race.lastName ?? "-"}
-            </span>
-            <span
-              className={styles["Race__listItem"]}
-              aria-label="Номер тел.: "
-            >
-              {race.phone}
-            </span>
-            <span className={styles["Race__listItem"]} aria-label="Время: ">
-              {race.time}
-            </span>
-            <span
-              className={styles["Race__listItem"]}
-              aria-label="Вид заезда: "
-            >
-              {race?.raceTypeId?.name ?? "-"}
-            </span>
-            <span className={styles["Race__listItem"]} aria-label="Дата: ">
-              {DateTime.fromISO(race.createdAt).toFormat("dd.MM.yy hh:mm")}
-            </span>
-          </div>
-        ))}
+        {races?.map((race) => {
+          console.log(race);
+          const firstName = race.firstName || race.userLink?.firstName;
+          const lastName = race.lastName || race.userLink?.lastName;
+          return (
+            <div className={cn(styles["Race__listGroup"])}>
+              <span
+                className={cn(
+                  styles["Race__listItem"],
+                  styles["Race__listItem_withTag"]
+                )}
+              >
+                {race.raceTypeId.archive && (
+                  <Popup hits={MESSAGES.archiveHits}>
+                    <FontAwesomeIcon icon={faBox} color={"red"} />
+                  </Popup>
+                )}
+              </span>
+              <span className={styles["Race__listItem"]} aria-label="Имя: ">
+                {firstName ?? "-"}
+              </span>
+              <span className={styles["Race__listItem"]} aria-label="Фамилия: ">
+                {lastName ?? "-"}
+              </span>
+              <span
+                className={styles["Race__listItem"]}
+                aria-label="Номер тел.: "
+              >
+                {race.phone}
+              </span>
+              <span className={styles["Race__listItem"]} aria-label="Время: ">
+                {race.time}
+              </span>
+              <span
+                className={styles["Race__listItem"]}
+                aria-label="Вид заезда: "
+              >
+                {race?.raceTypeId?.name ?? "-"}
+              </span>
+              <span className={styles["Race__listItem"]} aria-label="Дата: ">
+                {DateTime.fromISO(race.createdAt).toFormat("dd.MM.yy hh:mm")}
+              </span>
+            </div>
+          );
+        })}
       </section>
     </>
   );

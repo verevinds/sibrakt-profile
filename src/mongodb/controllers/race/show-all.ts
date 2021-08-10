@@ -14,8 +14,8 @@ export default async (req: NextApiRequest) => {
 
   const races = await Race.find(findParams)
     .populate({
-      path: "raceTypeId",
-      select: "-__v -createdAt",
+      path: "raceTypeId userLink",
+      select: "-__v -createdAt -password -email -tokens -phone -score -role -_id",
     })
     .select("-__v")
     .sort({ createdAt: -1 });

@@ -1,3 +1,5 @@
+import { ProfileData } from "./user";
+
 export type RaceTypeData = {
   name: string;
   _id: string;
@@ -13,6 +15,10 @@ export type RaceData = {
   phone: string;
   time: number;
   raceTypeId: Omit<RaceTypeData, "createdAt">;
+  userLink: {
+    firstName?: Pick<ProfileData, "firstName">;
+    lastName?: Pick<ProfileData, "lastName">;
+  } | null;
 };
 export type RaceRequest = {
   firstName?: string;

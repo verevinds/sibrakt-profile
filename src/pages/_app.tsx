@@ -12,9 +12,9 @@ import "src/styles/global.css";
 import "normalize.css/normalize.css";
 
 import "src/styles/nprogress.css";
-import '@fortawesome/fontawesome-svg-core/styles.css';
+import "@fortawesome/fontawesome-svg-core/styles.css";
 
-import { config } from '@fortawesome/fontawesome-svg-core';
+import { config } from "@fortawesome/fontawesome-svg-core";
 config.autoAddCss = false;
 
 const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME;
